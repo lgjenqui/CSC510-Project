@@ -1,0 +1,14 @@
+{
+  "name": "common",
+  "version": "0.0.1",
+  "description": "common files to both client and server",
+  "scripts": {},
+  "author": "Paulo Borba and Marcelo d'Amorim",
+  "license": "MIT",    
+  "dependencies": {
+    "tslib": "^2.5.0"
+  },
+  "devDependencies": {
+    "typescript": "^4.9.5"
+  }
+}

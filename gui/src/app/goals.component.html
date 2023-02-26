@@ -1,0 +1,16 @@
+<table>
+  <tr>
+     <th>Name</th>
+     <th>ID</th>
+     <th>e-mail</th>
+     <th>Requirements</th>
+     <th>Config. Management</th>
+  </tr>
+  <tr *ngFor="let s of students">
+     <td>{{s.name}}</td>
+     <td>{{s.id}}</td>
+     <td>{{s.email}}</td>
+     <td class="meta"><input [(ngModel)]="s.goal_requirements" (change)="updateStudent(s)"></td>
+     <td class="meta"><input [(ngModel)]="s.goal_conf_management" (change)="updateStudent(s)"></td>
+  </tr>
+</table>
