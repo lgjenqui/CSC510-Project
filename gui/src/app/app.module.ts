@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { GoalsComponent } from './goals.component';
 import { StudentsComponent } from './students.component';
 import { StudentService } from './student.service';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { StudentService } from './student.service';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    NgbModule,
     HttpClientModule,
     RouterModule.forRoot([
        {
