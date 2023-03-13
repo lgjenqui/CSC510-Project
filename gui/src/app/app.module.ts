@@ -36,4 +36,5 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   providers: [StudentService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+}
