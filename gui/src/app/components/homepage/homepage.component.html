@@ -1,0 +1,87 @@
+<body>
+    <h2>Pick a movie for me please!</h2>
+    <div class="prompt" *ngIf="formPage == 0">
+        <p>Having trouble picking a movie?</p>
+        <p>Answer a few short questions and we'll pick one for you from our database of hundreds!</p>
+        <button type="button" (click)="showNextFormPage()" class="btn btn-success">Start now!</button>
+    </div>
+
+    <form *ngIf="formPage >= 1" [formGroup]="movieRecForm" class="questionnaire-container bg-primary">
+
+        <!-- Page 1 of the form -->
+        <div *ngIf="formPage == 1" class="questionnaire">
+            <div class="prompt">
+                <h3>What is the occasion?</h3>
+                <hr>
+            </div>
+            <div class="form-container" >
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="occasion" id="radioButton1" value="date night" formControlName="occasion" checked>
+                    <label class="form-check-label" for="radioButton1">
+                        Date night
+                    </label>
+                </div>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="occasion" id="radioButton2" value="family movie night" formControlName="occasion">
+                    <label class="form-check-label" for="radioButton2">
+                        Family movie night
+                    </label>
+                </div>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="occasion" id="radioButton3" value="movie with friends" formControlName="occasion">
+                    <label class="form-check-label" for="radioButton3">
+                        Movie with friends
+                    </label>
+                </div>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="occasion" id="radioButton4" value="bored and alone" formControlName="occasion">
+                    <label class="form-check-label" for="radioButton4">
+                        Bored and alone
+                    </label>
+                </div>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="occasion" id="radioButton5" value="other" formControlName="occasion">
+                    <label class="form-check-label" for="radioButton5">
+                        Other
+                    </label>
+                </div>
+            </div>
+            <button type="button" (click)="showLastFormPage()" class="btn btn-success btn-back">Back</button>
+            <button type="button" (click)="showNextFormPage()" class="btn btn-success btn-next">Next</button>
+        </div>
+
+        <!-- Page 2 of the form -->
+        <div *ngIf="formPage == 2" class="questionnaire">
+            <div class="mood-select">
+                <div class="prompt">
+                    <h3>How are you today?</h3>
+                    <hr>
+                </div>
+                <input class="mood-select-input" type="radio" name="mood" id="happy-image" value="happy" formControlName="mood">
+                <label class="mood-select-label" for="happy-image">Happy <img src="../../../assets/happy.png" alt="happy"></label>
+
+                <input class="mood-select-input" type="radio" name="mood" id="neutral-image" value="neutral" formControlName="mood">
+                <label class="mood-select-label" for="neutral-image">Neutral <img src="../../../assets/neutral.png" alt="neutral"></label>
+
+                <input class="mood-select-input" type="radio" name="mood" id="sad-image" value="sad" formControlName="mood">
+                <label class="mood-select-label" for="sad-image">Sad <img src="../../../assets/sad.png" alt="sad"></label>
+            </div>
+            <button type="button" (click)="showLastFormPage()" class="btn btn-success btn-back">Back</button>
+            <button type="button" (click)="showNextFormPage()" class="btn btn-success btn-next">Next</button>
+        </div>
+
+        <!-- Page 3 of the form -->
+        <div *ngIf="formPage == 3" class="questionnaire">
+            <div class="movie-age">
+                <div class="prompt">
+                    <h3>How old would you like the movie to be?</h3>
+                    <hr>
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
