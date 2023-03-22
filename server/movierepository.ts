@@ -1,6 +1,6 @@
 import { Movie } from '../common/movie';
 
-export class StudentRepository {
+export class MovieRepository {
   movies: Movie[] = [];
 
   populateMoviesRepositoryFromCSV() {
