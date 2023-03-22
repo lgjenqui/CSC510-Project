@@ -2,11 +2,12 @@ import express = require('express');
 
 import bodyParser = require("body-parser");
 
-import {Student} from '../common/student';
-import {StudentRepository} from './studentrepository';
+import {Movie} from '../common/movie';
+import {MovieRepository} from './movierepository';
 
 var taserver = express();
-var studentrepo: StudentRepository = new StudentRepository();
+var movieRepo: MovieRepository = new MovieRepository();
+movieRepo.populateMoviesRepositoryFromCSV();
 
 var allowCrossDomain = function(req: any, res: any, next: any) {
   res.header('Access-Control-Allow-Origin', "*");
