@@ -7,6 +7,7 @@ import { MovieRepository } from './movierepository';
 
 var taserver = express();
 var movieRepo: MovieRepository = new MovieRepository();
+
 movieRepo.populateMoviesRepositoryFromCSV();
 
 var allowCrossDomain = function (req: any, res: any, next: any) {
@@ -15,13 +16,18 @@ var allowCrossDomain = function (req: any, res: any, next: any) {
   res.header('Access-Control-Allow-Headers', 'Content-Type');
   next();
 }
+taserver.use(allowCrossDomain);
+taserver.use(bodyParser.json());
+
 taserver.get('/movies', function (req: express.Request, res: express.Response) {
+
   res.send(JSON.stringify(movieRepo.getAllMovies()));
+
 })
 
 taserver.post('/recmovies', function (req: express.Request, res: express.Response) {
-  var occasion = req.body.occasion;
   var emotion = req.body.emotion;
+  var occasion = req.body.occasion;
   var mpaa_rating = req.body.rating;
   var start_release_year = req.body.start_release_year;
   var last_release_year = req.body.last_release_year;
@@ -32,9 +38,6 @@ taserver.post('/recmovies', function (req: express.Request, res: express.Respons
 
 })
 
-taserver.use(allowCrossDomain);
-
-taserver.use(bodyParser.json());
 
 taserver.listen(3000, function () {
   console.log('Server listening on port 3000!')
