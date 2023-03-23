@@ -10,15 +10,28 @@ body {
 button {
     font-size: 20px;
     margin-top: 20px;
-    display: inline !important;
 }
 
 h3 {
     margin-top: 15px;
 }
 
-.btn-next {
-    margin-left: 30px;
+.btn-group {
+    margin: auto;
+    width: 180px;
+}
+
+.btn-prev, .btn-next {
+    max-width: 90px;
+    animation: fadeIn 2s;
+}
+
+/* Used to make input for radio buttons and checkboxes narrower so the space
+    between the radio button/checkbox and its label are reasonably-sized
+*/
+.checked-inputs {
+    width: 30%;
+    margin: auto; /* Center the container */
 }
 
 .prompt > p {
@@ -27,7 +40,7 @@ h3 {
 
 .questionnaire-container {
     border-radius: 10px;
-    width: 70%;
+    width: 75%;
     margin: auto;
     margin-top: 30px;
     animation: fadeIn 2s;
@@ -44,23 +57,6 @@ h3 {
     width: 300px;
     margin: 0 auto 15px auto;
     border-top: 3px solid white;
-}
-
-.form-container {
-    width: 40%;
-    margin: auto;
-}
-
-.form-check > input {
-    color: red!important;
-}
-
-.form-check label {
-    padding-left: 0;
-}
-
-.btn-next {
-    margin-top: 15px;
 }
 
 .mood-select {

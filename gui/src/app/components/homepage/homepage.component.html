@@ -14,7 +14,7 @@
                 <h3>What is the occasion?</h3>
                 <hr>
             </div>
-            <div class="form-container" >
+            <div class="checked-inputs" >
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="occasion" id="radioButton1" value="date night" formControlName="occasion" checked>
                     <label class="form-check-label" for="radioButton1">
@@ -44,14 +44,16 @@
                 </div>
 
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="occasion" id="radioButton5" value="other" formControlName="occasion">
+                    <input class="form-check-input" type="radio" name="occasion" id="radioButton5" value="other" formControlName="occasion" checked>
                     <label class="form-check-label" for="radioButton5">
                         Other
                     </label>
                 </div>
             </div>
-            <button type="button" (click)="showLastFormPage()" class="btn btn-success btn-back">Back</button>
-            <button type="button" (click)="showNextFormPage()" class="btn btn-success btn-next">Next</button>
+            <div class="btn-group">
+                <button type="button" (click)="showLastFormPage()" class="btn btn-warning btn-prev">Back</button>
+                <button type="button" (click)="showNextFormPage()" [hidden]="!movieRecForm.value.occasion" class="btn btn-success btn-next">Next</button>
+            </div>
         </div>
 
         <!-- Page 2 of the form -->
@@ -64,14 +66,16 @@
                 <input class="mood-select-input" type="radio" name="mood" id="happy-image" value="happy" formControlName="mood">
                 <label class="mood-select-label" for="happy-image">Happy <img src="../../../assets/happy.png" alt="happy"></label>
 
-                <input class="mood-select-input" type="radio" name="mood" id="neutral-image" value="neutral" formControlName="mood">
+                <input class="mood-select-input" type="radio" name="mood" id="neutral-image" value="neutral" formControlName="mood" checked>
                 <label class="mood-select-label" for="neutral-image">Neutral <img src="../../../assets/neutral.png" alt="neutral"></label>
 
                 <input class="mood-select-input" type="radio" name="mood" id="sad-image" value="sad" formControlName="mood">
                 <label class="mood-select-label" for="sad-image">Sad <img src="../../../assets/sad.png" alt="sad"></label>
             </div>
-            <button type="button" (click)="showLastFormPage()" class="btn btn-success btn-back">Back</button>
-            <button type="button" (click)="showNextFormPage()" class="btn btn-success btn-next">Next</button>
+            <div class="btn-group">
+                <button type="button" (click)="showLastFormPage()" class="btn btn-warning btn-prev">Back</button>
+                <button type="button" (click)="showNextFormPage()" *ngIf="movieRecForm.value.mood" class="btn btn-success btn-next">Next</button>
+            </div>
         </div>
 
         <!-- Page 3 of the form -->
@@ -81,6 +85,60 @@
                     <h3>How old would you like the movie to be?</h3>
                     <hr>
                 </div>
+            </div>
+            <div class="btn-group">
+                <button type="button" (click)="showLastFormPage()" class="btn btn-warning btn-prev">Back</button>
+                <button type="button" (click)="showNextFormPage()" class="btn btn-success btn-next">Next</button>
+            </div>
+        </div>
+
+        <!-- Page 4 of the form -->
+        <div *ngIf="formPage == 4" class="questionnaire">
+            <div class="MPAA-rating">
+                <div class="prompt">
+                    <h3>Do you have a preference for the age-appropriateness of the movie?</h3>
+                    <hr>
+                </div>
+                <div class="checked-inputs">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="no-preference-check" formControlName="mpaaRating">
+                        <label class="form-check-label" for="no-preference-check">
+                          No preference
+                        </label>
+                    </div>
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="g" id="g-check" formControlName="mpaaRating">
+                        <label class="form-check-label" for="g-check">
+                            G
+                        </label>
+                    </div>
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="pg" id="pg-check" formControlName="mpaaRating">
+                        <label class="form-check-label" for="pg-check">
+                            PG
+                        </label>
+                    </div>
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="pg-13" id="pg-13-check" formControlName="mpaaRating">
+                        <label class="form-check-label" for="pg-13-check">
+                            PG-13
+                        </label>
+                    </div>
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="r" id="r-check" formControlName="mpaaRating">
+                        <label class="form-check-label" for="r-check">
+                            R/NC-17
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="btn-group">
+                <button type="button" (click)="showLastFormPage()" class="btn btn-warning btn-prev">Back</button>
+                <button type="button" (click)="showNextFormPage()" *ngIf="movieRecForm.value.mpaaRating" class="btn btn-success btn-next">Next</button>
             </div>
         </div>
     </form>

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormArray, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-homepage',
@@ -8,11 +8,12 @@ import { FormBuilder } from '@angular/forms';
 })
 export class HomepageComponent {
     formPage: number;
+
     movieRecForm = this.formBuilder.group({
         occasion: '',
         mood: '',
         movieAge: '',
-        mpaaRating: '',
+        mpaaRating: [],
     })
 
     constructor(private formBuilder: FormBuilder) {
