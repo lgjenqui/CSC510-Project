@@ -10,13 +10,15 @@ import { StudentsComponent } from './students.component';
 import { StudentService } from './student.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HomepageComponent } from './components/homepage/homepage.component';
+import { RecommendationComponent } from './components/recommendation/recommendation.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     GoalsComponent,
     StudentsComponent,
-    HomepageComponent   
+    HomepageComponent,
+    RecommendationComponent   
   ],
   imports: [
     BrowserModule,

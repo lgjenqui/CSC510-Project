@@ -42,7 +42,7 @@ export class HomepageComponent {
         // A temporary sleep for 2s before navigation to show the loading animation
         setTimeout(() => 
         {
-            this.router.navigate(['/']);
+            this.router.navigate(['/recommendation/memento']);
             console.log('done')
         },
         2000);
