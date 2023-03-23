@@ -39,12 +39,12 @@ export class HomepageComponent {
     onSubmit(): void {
         this.formPage++;
 
-        // A temporary sleep for 2s before navigation to show the loading animation
+        // A temporary sleep for 4s before navigation to show the loading animation
         setTimeout(() => 
         {
-            this.router.navigate(['/recommendation/memento']);
+            this.router.navigate(['/recommendation/morbius']);
             console.log('done')
         },
-        2000);
+        3000);
     }
 }
