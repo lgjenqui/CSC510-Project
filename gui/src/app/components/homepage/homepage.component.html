@@ -6,7 +6,7 @@
         <button type="button" (click)="showNextFormPage()" class="btn btn-success">Start now!</button>
     </div>
 
-    <form *ngIf="formPage >= 1" [formGroup]="movieRecForm" class="questionnaire-container bg-primary">
+    <form *ngIf="formPage >= 1 && formPage <= 4" [formGroup]="movieRecForm" class="questionnaire-container bg-primary">
 
         <!-- Page 1 of the form -->
         <div *ngIf="formPage == 1" class="questionnaire">
@@ -86,6 +86,17 @@
                     <hr>
                 </div>
             </div>
+            <div class="movie-age-input">
+                <label for="startingYear">From</label>
+                <input type="number" id="startingYear" formControlName="startingYear">
+
+    
+                <label for="endingYear">To</label>
+                <input type="number" id="endingYear" formControlName="endingYear">
+
+                <p>If you have no preference, leave the input fields above blank.</p>
+            </div>
+
             <div class="btn-group">
                 <button type="button" (click)="showLastFormPage()" class="btn btn-warning btn-prev">Back</button>
                 <button type="button" (click)="showNextFormPage()" class="btn btn-success btn-next">Next</button>
@@ -138,8 +149,12 @@
             </div>
             <div class="btn-group">
                 <button type="button" (click)="showLastFormPage()" class="btn btn-warning btn-prev">Back</button>
-                <button type="button" (click)="showNextFormPage()" *ngIf="movieRecForm.value.mpaaRating" class="btn btn-success btn-next">Next</button>
+                <button type="button" (click)="onSubmit()" *ngIf="movieRecForm.value.mpaaRating" class="btn btn-success btn-submit">Submit</button>
             </div>
         </div>
     </form>
+    <!-- Temporary spinner to be shown after submission -->
+    <div *ngIf="formPage > 4" class="spinner-border text-success" role="status">
+        <span class="sr-only"></span>
+    </div>
 </body>

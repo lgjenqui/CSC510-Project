@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormArray, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-homepage',
@@ -12,11 +13,13 @@ export class HomepageComponent {
     movieRecForm = this.formBuilder.group({
         occasion: '',
         mood: '',
-        movieAge: '',
-        mpaaRating: [],
+        startingYear: null, 
+        endingYear: null,
+        mpaaRating: null,
     })
 
-    constructor(private formBuilder: FormBuilder) {
+    constructor(private formBuilder: FormBuilder,
+                private router: Router) {
         this.formPage = 0; // indicates no form page should be shown
     }
 
@@ -34,6 +37,14 @@ export class HomepageComponent {
 
     /** Submits the form info */
     onSubmit(): void {
+        this.formPage++;
 
+        // A temporary sleep for 2s before navigation to show the loading animation
+        setTimeout(() => 
+        {
+            this.router.navigate(['/']);
+            console.log('done')
+        },
+        2000);
     }
 }
