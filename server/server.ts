@@ -19,15 +19,15 @@ taserver.get('/movies', function (req: express.Request, res: express.Response) {
   res.send(JSON.stringify(movieRepo.getAllMovies()));
 })
 
-taserver.get('/recmovies', function (req: express.Request, res: express.Response) {
-  var occasion = req.body[0].occasion;
-  var emotion = req.body[0].emotion;
-  var rating = req.body[0].rating;
-  var start_release_year = req.body[0].start_release_year;
-  var last_release_year = req.body[0].last_release_year;
+taserver.post('/recmovies', function (req: express.Request, res: express.Response) {
+  var occasion = req.body.occasion;
+  var emotion = req.body.emotion;
+  var mpaa_rating = req.body.rating;
+  var start_release_year = req.body.start_release_year;
+  var last_release_year = req.body.last_release_year;
 
   var genre: String[] = movieRepo.getGenre(occasion, emotion);
-  var movies: Movie[] = movieRepo.getFilteredMovies(genre, rating, start_release_year, last_release_year)
+  var movies: Movie[] = movieRepo.getFilteredMovies(genre, mpaa_rating, start_release_year, last_release_year)
   res.send(JSON.stringify(movies));
 
 })

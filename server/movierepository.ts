@@ -7,7 +7,7 @@ export class MovieRepository {
     // TODO: Populate repository from CSV
   }
   getGenre(occasion: String, emotion: String): String[] {
-    var returnGenre: string[];
+    var returnGenre: string[] = [];
     if (occasion == "Date Night" && emotion == "Happy") {
       returnGenre.push("Comedy");
       return returnGenre;
