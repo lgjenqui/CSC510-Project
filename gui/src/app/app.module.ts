@@ -5,9 +5,6 @@ import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { GoalsComponent } from './goals.component';
-import { StudentsComponent } from './students.component';
-import { StudentService } from './student.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { RecommendationComponent } from './components/recommendation/recommendation.component';
@@ -15,8 +12,6 @@ import { RecommendationComponent } from './components/recommendation/recommendat
 @NgModule({
   declarations: [
     AppComponent,
-    GoalsComponent,
-    StudentsComponent,
     HomepageComponent,
     RecommendationComponent   
   ],
@@ -27,22 +22,9 @@ import { RecommendationComponent } from './components/recommendation/recommendat
     ReactiveFormsModule,
     NgbModule,
     HttpClientModule,
-    RouterModule.forRoot([
-       {
-         path: 'goals',
-         component: GoalsComponent
-       },
-       {
-         path: 'students',
-         component: StudentsComponent
-       },
-       {
-        path: 'homepage',
-        component: HomepageComponent
-       }
-    ])    
+    AppRoutingModule  
   ],
-  providers: [StudentService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { 

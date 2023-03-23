@@ -26,13 +26,11 @@ export class HomepageComponent {
     /** Hides the currently visible form page (if there is one) and shows the next */
     showNextFormPage(): void {
         this.formPage++;
-        console.log(this.movieRecForm.value)
     }
 
     /** Hides the currently visible form page (if there is one) and shows the next */
     showLastFormPage(): void {
         this.formPage--;
-        console.log(this.movieRecForm.value)
     }
 
     /** Submits the form info */
@@ -43,7 +41,6 @@ export class HomepageComponent {
         setTimeout(() => 
         {
             this.router.navigate(['/recommendation/morbius']);
-            console.log('done')
         },
         3000);
     }
