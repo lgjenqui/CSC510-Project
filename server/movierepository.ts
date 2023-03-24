@@ -1,10 +1,31 @@
 import { Movie } from '../common/movie';
+import {  parse } from 'csv-parse';
+import * as path from "path";
+import * as fs from "fs";
 
 export class MovieRepository {
   movies: Movie[] = [];
 
   populateMoviesRepositoryFromCSV() {
-    // TODO: Populate repository from CSV
+    const csvFilePath = path.resolve(__dirname, '../data/movies.csv');
+    
+    const headers = ['title', 'genre', 'runtime', 'mpaa_rating', 'release_year', 
+    'imdb_rating', 'critics_score', 'director', 'actor1', 'actor2', 'actor3', 
+    'actor4', 'actor5'];
+    
+    const fileContent = fs.readFileSync(csvFilePath, {encoding: 'utf-8'});
+    
+    parse(fileContent, {
+		delimiter: ',',
+		columns: headers,
+	}, (error, result:Movie[]) => {
+		if (error) {
+			console.error(error);
+		}
+		for (var m of result) {
+			this.movies.push(m);
+		}
+	});
   }
 
   add(movie: Movie): Movie {
