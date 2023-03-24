@@ -5,9 +5,13 @@ export class Movie {
   mpaa_rating: string = "";
   release_year: number = 0;
   imdb_rating: number = 0;
-  critics_rating: string = "";
   critics_score: number = 0;
   director: string = "";
+  actor1: string = "";
+  actor2: string = "";
+  actor3: string = "";
+  actor4: string = "";
+  actor5: string = "";
 
   constructor() {
     this.clean();
@@ -20,9 +24,13 @@ export class Movie {
     this.mpaa_rating = "";
     this.release_year = 0;
     this.imdb_rating = 0;
-    this.critics_rating = "";
     this.critics_score = 0;
     this.director = "";
+    this.actor1 = "";
+    this.actor2 = "";
+    this.actor3 = "";
+    this.actor4 = "";
+    this.actor5 = "";
   }
 
   clone(): Movie {
@@ -38,9 +46,13 @@ export class Movie {
     this.mpaa_rating = from.mpaa_rating;
     this.release_year = from.release_year;
     this.imdb_rating = from.imdb_rating;
-    this.critics_rating = from.critics_rating;
     this.critics_score = from.critics_score;
     this.director = from.director;
+    this.actor1 = from.actor1;
+    this.actor2 = from.actor2;
+    this.actor3 = from.actor3;
+    this.actor4 = from.actor4;
+    this.actor5 = from.actor5;
   }
 
 }
