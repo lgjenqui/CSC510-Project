@@ -22,8 +22,8 @@ export class MovieRepository {
 		if (error) {
 			console.error(error);
 		}
-		for (var m of result) {
-			this.movies.push(m);
+		for (var i = 1; i < result.length; i++) {
+			this.add(result[i]);
 		}
 	});
   }
