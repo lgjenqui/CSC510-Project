@@ -28,7 +28,7 @@ taserver.get('/movies', function (req: express.Request, res: express.Response) {
 taserver.post('/recmovies', function (req: express.Request, res: express.Response) {
   var emotion = req.body.emotion;
   var occasion = req.body.occasion;
-  var mpaa_rating = req.body.rating;
+  var mpaa_rating = req.body.mpaa_rating;
   var start_release_year = req.body.start_release_year;
   var last_release_year = req.body.last_release_year;
 
