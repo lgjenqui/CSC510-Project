@@ -33,9 +33,23 @@ taserver.post('/recmovies', function (req: express.Request, res: express.Respons
   var last_release_year = req.body.last_release_year;
 
   var genre: String[] = movieRepo.getGenre(occasion, emotion);
-  var movies: Movie[] = movieRepo.getFilteredMovies(genre, mpaa_rating, start_release_year, last_release_year)
-  res.send(JSON.stringify(movies));
-
+  var movies: Movie[] = movieRepo.getFilteredMovies(genre, mpaa_rating, start_release_year, last_release_year);
+  if (movies.length == 0) {
+	movies = movieRepo.getFilteredMovies(genre, mpaa_rating, (parseInt(start_release_year) - 25), (parseInt(last_release_year) + 25));
+	if (movies.length == 0) {
+		res.status(204).send(JSON.stringify(movies));
+	} else {
+		for (var i = 5; i <= 25; i+=5) {
+			movies = movieRepo.getFilteredMovies(genre, mpaa_rating, (parseInt(start_release_year) - i), (parseInt(last_release_year) + i));
+		  	if (movies.length != 0) {
+				break;
+			}
+		}
+		res.status(206).send(JSON.stringify(movies));
+	}
+  } else {
+	res.status(200).send(JSON.stringify(movies));
+  }
 })
 
 
