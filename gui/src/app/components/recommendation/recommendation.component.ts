@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { MovieService } from 'src/app/services/movie.service';
 import { Movie } from '../../../../../common/movie';
 import { switchMap } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-recommendation',
@@ -13,15 +14,20 @@ export class RecommendationComponent {
   currentRecMovie!: Movie;
   currentRecIdx = 0; // the index of the current movie recommendation
   currentMoviePosterPath: string = "";
+  statusCode: number = 200;
 
-  constructor(private movieService: MovieService) {
+  constructor(private movieService: MovieService,
+              private router: Router) {
     this.loadMovieRecommendations();
   }
 
   loadMovieRecommendations() {
     this.recommendations = this.movieService.getMovieRecommendations();
+    this.statusCode = this.movieService.getStatusCode();
     this.currentRecMovie = this.recommendations[0];
-    this.getMoviePoster();
+    if (this.recommendations.length > 0) {
+      this.getMoviePoster();
+    }
   }
 
   showNextRecommendation() {
@@ -48,5 +54,9 @@ export class RecommendationComponent {
         },
         () => console.log('requests done')
     )
+  }
+
+  redirectToHomepage() {
+    this.router.navigate(['/']);
   }
 }

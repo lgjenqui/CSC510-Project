@@ -25,6 +25,9 @@ export class MovieService {
     // The current list of recommended movies
     recommendedMovies: Array<Movie> = [];
 
+    // Holds the status code for the response containing the recommended list of movies
+    statusCode: number = -1;
+
     constructor(private http: HttpClient) {
     }
 
@@ -32,25 +35,31 @@ export class MovieService {
         return this.http.get<Array<Movie>>(this.baseUrl + "movies"); 
     }
 
-    getNewMovieRecommendations(body: string): Observable<Array<Movie>> {
+    getNewMovieRecommendations(body: string): Observable<any> {
         const httpOptions = {
             headers: new HttpHeaders({
                 'Content-Type': 'application/json'
-            })
+            }),
+            observe: "response" as "body"
         }
-        return this.http.post<Array<Movie>>(this.baseUrl + "recmovies", body, httpOptions);
+        return this.http.post(this.baseUrl + "recmovies", body, httpOptions);
     }
 
     setMovieRecommendations(movieReqString: string) {
         this.getNewMovieRecommendations(movieReqString).subscribe(
-            returnedMovies => {
-                this.recommendedMovies = returnedMovies;
-            }
+            res => {
+                this.recommendedMovies = res.body;
+                this.statusCode = res.status;
+            }   
         )
     }
 
     getMovieRecommendations(): Array<Movie> {
         return this.recommendedMovies;
+    }
+
+    getStatusCode(): number {
+        return this.statusCode;
     }
 
     getMoviePosterLink(imgId: string): Observable<any> {
