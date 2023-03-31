@@ -1,8 +1,8 @@
-Feature: As a professor
-         I want to register students
-         So that I can manage their learning goals
+Feature: As an end user
+         I want to fill out a form
+         So that I can have a movie recommended to me
 	 
-Scenario: Registering student with non registered ID
+Scenario: Filling Out Form to get a movie recommended
 Given I am at the home page
 When I click on Date Night
 When I click on Happy
