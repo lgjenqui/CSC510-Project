@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormControl, FormArray } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MovieService } from 'src/app/services/movie.service';
 import { Movie } from '../../../../../common/movie';
@@ -14,10 +14,10 @@ export class HomepageComponent {
 
     movieRecForm = this.formBuilder.group({
         occasion: '',
-        mood: '',
-        startingYear: null, 
-        endingYear: null,
-        mpaaRating: null,
+        emotion: '',
+        start_release_year: null, 
+        last_release_year: null,
+        mpaa_rating: ''
     })
 
     constructor(private formBuilder: FormBuilder,
@@ -40,20 +40,14 @@ export class HomepageComponent {
     onSubmit(): void {
         this.formPage++;
 
-        // A temporary sleep for 4s before navigation to show the loading animation
-        // setTimeout(() => 
-        // {
-        //     this.router.navigate(['/recommendation/morbius']);
-        // },
-        // 3000);
-
         // Make a request to the movie service using the form input
-        const requestedMovie: Movie = {
-            mood = this.movieRecForm.value.mood?,
-            occasion = this.
-            mpaa_rating = req.body.mpaa_rating;
-            start_release_year = req.body.start_release_year;
-            last_release_year = req.body.last_release_year;
-        }
+        this.movieService.setMovieRecommendations(JSON.stringify(this.movieRecForm.value));
+
+        // Sleep then navigate to the recommendation page
+        setTimeout(() => 
+        {
+            this.router.navigate(['/recommendation']);
+        },
+        1500);
     }
 }

@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpEvent } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Movie } from '../../../../common/movie';
-import { Observable, throwError } from 'rxjs';
-import { catchError, retry } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +20,27 @@ export class MovieService {
         return this.http.get<Array<Movie>>(this.baseUrl + "movies"); 
     }
 
-    getMovieRecommendations(movie: Movie): Observable<Array<Movie>> {
-        return this.http.post<Array<Movie>>(this.baseUrl + "recmovies", movie);
+    getNewMovieRecommendations(body: string): Observable<Array<Movie>> {
+        console.log(body)
+
+        const httpOptions = {
+            headers: new HttpHeaders({
+                'Content-Type': 'application/json'
+            })
+        }
+        return this.http.post<Array<Movie>>(this.baseUrl + "recmovies", body, httpOptions);
+    }
+
+    setMovieRecommendations(movieReqString: string) {
+        this.getNewMovieRecommendations(movieReqString).subscribe(
+            returnedMovies => {
+                this.recommendedMovies = returnedMovies;
+                console.log(this.recommendedMovies)
+            }
+        )
+    }
+
+    getMovieRecommendations(): Array<Movie> {
+        return this.recommendedMovies;
     }
 }

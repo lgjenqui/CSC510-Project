@@ -4,32 +4,33 @@
     </div>
 
     <div class="movie-details-container">
-        <h2 id="movie-title">Morbius</h2>
-        <p>Biochemist Michael Morbius tries to cure himself of a rare blood disease, but he inadvertently infects himself with a form of vampirism instead.</p>
+        <h2 id="movie-title">{{currentRecMovie.title}}</h2>
         <hr>
 
         <div class="general-info">
-            <p>MPAA rating: <b class="text-warning">PG-13</b></p>
+            <p>MPAA rating: <b class="text-warning">{{currentRecMovie.mpaa_rating}}</b></p>
             <div class="vertical-line"></div>
-            <p>Year released: <b class="text-warning">2022</b></p>
+            <p>Year released: <b class="text-warning">{{currentRecMovie.release_year}}</b></p>
             <div class="vertical-line"></div>
-            <p>Genre(s): <b class="text-warning">Action, Adventure, Horror</b></p>
+            <p>Genre(s): <b class="text-warning">{{currentRecMovie.genre}}</b></p>
             <hr>
         </div>
 
         <div class="cast-and-crew-info">
-            <p>Director(s): <b class="text-warning">Daniel Espinosa</b></p>
+            <p>Director(s): <b class="text-warning">{{currentRecMovie.director}}</b></p>
             <div class="vertical-line"></div>
-            <p>Top actors: <b class="text-warning">Jared Leto, Matt Smith, Adria Arjona</b></p>
+            <p>Top actors: 
+                <b *ngIf="currentRecMovie.actor1 != 'NA'" class="text-warning">{{currentRecMovie.actor1}}</b>
+                <b *ngIf="currentRecMovie.actor2 != 'NA'" class="text-warning">, {{currentRecMovie.actor2}}</b>
+                <b *ngIf="currentRecMovie.actor3 != 'NA'"class="text-warning">, {{currentRecMovie.actor3}}</b>
+            </p>
             <hr>
         </div>
 
         <div class="rating-info"> 
             <div class="imdb">
-                <a href="https://www.imdb.com/title/tt5108870/" target="_blank">
-                    <img src="../../../assets/imdb-logo.png" alt="imdb logo" id="imdb-logo" href="https://www.imdb.com/title/tt5108870/" class="logo">
-                </a>
-                <p id="rating">Rated <b>5.2 / 10 </b> stars</p>
+                <img src="../../../assets/imdb-logo.png" alt="imdb logo" id="imdb-logo" href="https://www.imdb.com/title/tt5108870/" class="logo">
+                <p id="rating">Rated <b>{{currentRecMovie.imdb_rating}}</b> stars</p>
             </div>
 
             <hr>
@@ -38,21 +39,13 @@
                 <a href="https://www.rottentomatoes.com/m/morbius" target="_blank">
                     <img src="../../../assets/rotton-tomatoes-logo.png" alt="rotton tomatoes logo" id="rotton-tomatoes-logo" class="logo">
                 </a>
-                <p id="rating">Rated <b>16%</b> by critics and <b>71%</b> by audiences</p>
+                <p id="rating">Rated <b>{{currentRecMovie.critics_score}}%</b> by critics</p>
             </div>
             <hr>
         </div>
 
-        <div class="youtube-trailer">
-            <a href="https://www.youtube.com/watch?v=SQK-QxxtE8Y" target="_blank">
-                <img src="../../../assets/trailer-icon.png" alt="movie trailer icon" id="trailer-icon" class="logo">
-                Watch the trailer
-            </a>
-            <hr>
-        </div>
-
-        <div class="reroll">
-            <button class="btn btn-success">
+        <div class="reroll" *ngIf="currentRecIdx < recommendations.length - 1">
+            <button (click)="showNextRecommendation()" class="btn btn-success">
                 Want a different recommendation?
 
                 <!-- Bootstrap icon -->
