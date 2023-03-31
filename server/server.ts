@@ -26,8 +26,7 @@ taserver.get('/movies', function (req: express.Request, res: express.Response) {
 })
 
 taserver.post('/recmovies', function (req: express.Request, res: express.Response) {
-  console.log(req.body)
-
+  // Parse the request body into its separate parts
   var emotion = req.body.emotion;
   var occasion = req.body.occasion;
   var mpaa_rating = req.body.mpaa_rating;
