@@ -6,7 +6,7 @@ import * as fs from "fs";
 export class MovieRepository {
   movies: Movie[] = [];
 
-  populateMoviesRepositoryFromCSV() {
+  async populateMoviesRepositoryFromCSV() {
     const csvFilePath = path.resolve(__dirname, '../data/movies.csv');
     
     const headers = ['title', 'genre', 'runtime', 'mpaa_rating', 'release_year', 
@@ -15,18 +15,25 @@ export class MovieRepository {
     
     const fileContent = fs.readFileSync(csvFilePath, {encoding: 'utf-8'});
     
-    parse(fileContent, {
-		delimiter: ',',
-		columns: headers,
-	}, (error, result:Movie[]) => {
-		if (error) {
-			console.error(error);
-		}
-		for (var i = 1; i < result.length; i++) {
-			this.add(result[i]);
-		}
-	});
+    return new Promise<void>((resolve, reject) => {
+      parse(fileContent, {
+        delimiter: ',',
+        columns: headers,
+      }, (error, result: Movie[]) => {
+        if (error) {
+          console.error(error);
+          reject(error);
+        } else {
+          for (var i = 1; i < result.length; i++) {
+            this.add(result[i]);
+          }
+          resolve();
+        }
+      });
+    });
   }
+  
+  
   getGenre(occasion: String, emotion: String): String[] {
     var returnGenre: string[] = [];
     if (occasion == "Date Night" && emotion == "Happy") {
