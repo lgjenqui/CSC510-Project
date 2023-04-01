@@ -65,11 +65,11 @@ input[type=number] {
     border-top: 3px solid white;
 }
 
-.mood-select {
+.emotion-select {
     margin: auto;
 }
 
-.mood-select-label > img {
+.emotion-select-label > img {
     margin: 0 20px 0 20px;
     height: 150px;
     width: 150px;
@@ -77,28 +77,28 @@ input[type=number] {
     display: block;
 }
 
-.mood-select-label {
+.emotion-select-label {
     font-size: 20px;
 }
 
-.mood-select-label:hover {
+.emotion-select-label:hover {
     background: #2c4763;
     border-radius: 10px;
 }
 
 /* Used to style the label associated with the invisible radio button */
-.mood-select > input[type="radio"]:checked+label {
+.emotion-select > input[type="radio"]:checked+label {
     outline: 2px solid white;
     background: #2c4763;
     border-radius: 10px;
 }   
 
-.mood-select-input {
+.emotion-select-input {
     opacity: 0;
     pointer-events: none; /* Prevents accidental clicking of the invisible radio buttons */
 }
 
-.mood-select-input:checked {
+.emotion-select-input:checked {
     border: 1px solid white;
 }
 

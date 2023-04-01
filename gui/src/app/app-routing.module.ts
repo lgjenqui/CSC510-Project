@@ -6,7 +6,7 @@ import { RecommendationComponent } from './components/recommendation/recommendat
 const routes: Routes = [
   { path: '', redirectTo: '/homepage', pathMatch: 'full'},
   { path: 'homepage', component: HomepageComponent },
-  { path: 'recommendation/:movieTitle', component: RecommendationComponent },
+  { path: 'recommendation', component: RecommendationComponent },
   { path: '**', redirectTo: '/homepage', pathMatch: 'full' } // catch-all for erroneous links
 ];
 

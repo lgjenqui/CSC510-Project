@@ -45,7 +45,6 @@ a {
 
 .movie-container {
     width: 70%;
-    min-height: 680px;
     margin: auto;
     margin-top: 50px;
     border-radius: 10px;
@@ -56,6 +55,21 @@ a {
 .movie-details-container {
     width: 65%;
     padding-top: 30px;
+    margin-top: 40px;
+}
+
+.request-error-warning {
+    width: 50%;
+    margin: 30px auto 30px auto;
+    text-align: center;
+}
+
+.no-movies-found button {
+    margin: auto;
+    margin-top: 15px;
+    display: block;
+    width: 250px;
+    font-size: 25px;
 }
 
 .vertical-line {

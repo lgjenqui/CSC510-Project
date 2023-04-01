@@ -84,7 +84,6 @@ export class MovieRepository {
       returnGenre.push("Comedy");
       return returnGenre;
     }
-
   }
 
   add(movie: Movie): Movie {
@@ -101,6 +100,11 @@ export class MovieRepository {
   getFilteredMovies(genres: String[], mpaa_rating: String,
     start_release_year: number, last_release_year: number): Movie[] {
     var returnMovies: Movie[] = this.movies.filter((movie) => {
+      if (mpaa_rating == "none") {
+        return movie.release_year >= start_release_year &&
+        movie.release_year <= last_release_year &&
+        genres.includes(movie.genre);
+      }
       return movie.mpaa_rating == mpaa_rating &&
         movie.release_year >= start_release_year &&
         movie.release_year <= last_release_year &&

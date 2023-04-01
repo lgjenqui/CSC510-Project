@@ -16,28 +16,28 @@
             </div>
             <div class="checked-inputs" >
                 <div class="form-check">
-                    <input name = "date-night" class="form-check-input" type="radio" name="occasion" id="radioButton1" value="date night" formControlName="occasion" checked>
+                    <input name = "date-night" class="form-check-input" type="radio" name="occasion" id="radioButton1" value="Date Night" formControlName="occasion" checked>
                     <label class="form-check-label" for="radioButton1">
                         Date night
                     </label>
                 </div>
 
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="occasion" id="radioButton2" value="family movie night" formControlName="occasion">
+                    <input class="form-check-input" type="radio" name="occasion" id="radioButton2" value="Family Movie Night" formControlName="occasion">
                     <label class="form-check-label" for="radioButton2">
                         Family movie night
                     </label>
                 </div>
 
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="occasion" id="radioButton3" value="movie with friends" formControlName="occasion">
+                    <input class="form-check-input" type="radio" name="occasion" id="radioButton3" value="Movie With Friends" formControlName="occasion">
                     <label class="form-check-label" for="radioButton3">
                         Movie with friends
                     </label>
                 </div>
 
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="occasion" id="radioButton4" value="bored and alone" formControlName="occasion">
+                    <input class="form-check-input" type="radio" name="occasion" id="radioButton4" value="Bored and Alone" formControlName="occasion">
                     <label class="form-check-label" for="radioButton4">
                         Bored and alone
                     </label>
@@ -58,23 +58,23 @@
 
         <!-- Page 2 of the form -->
         <div *ngIf="formPage == 2" class="questionnaire">
-            <div class="mood-select">
+            <div class="emotion-select">
                 <div class="prompt">
                     <h3>How are you today?</h3>
                     <hr>
                 </div>
-                <input class="mood-select-input" type="radio" name="mood" id="happy-image" value="happy" formControlName="mood">
-                <label class="mood-select-label" for="happy-image">Happy <img src="../../../assets/happy.png" alt="happy"></label>
+                <input class="emotion-select-input" type="radio" name="emotion" id="happy-image" value="Happy" formControlName="emotion">
+                <label class="emotion-select-label" for="happy-image">Happy <img src="../../../assets/happy.png" alt="happy"></label>
 
-                <input class="mood-select-input" type="radio" name="mood" id="neutral-image" value="neutral" formControlName="mood" checked>
-                <label class="mood-select-label" for="neutral-image">Neutral <img src="../../../assets/neutral.png" alt="neutral"></label>
+                <input class="emotion-select-input" type="radio" name="emotion" id="neutral-image" value="Neutral" formControlName="emotion" checked>
+                <label class="emotion-select-label" for="neutral-image">Neutral <img src="../../../assets/neutral.png" alt="neutral"></label>
 
-                <input class="mood-select-input" type="radio" name="mood" id="sad-image" value="sad" formControlName="mood">
-                <label class="mood-select-label" for="sad-image">Sad <img src="../../../assets/sad.png" alt="sad"></label>
+                <input class="emotion-select-input" type="radio" name="emotion" id="sad-image" value="Sad" formControlName="emotion">
+                <label class="emotion-select-label" for="sad-image">Sad <img src="../../../assets/sad.png" alt="sad"></label>
             </div>
             <div class="btn-group">
                 <button type="button" (click)="showLastFormPage()" class="btn btn-warning btn-prev">Back</button>
-                <button type="button" (click)="showNextFormPage()" *ngIf="movieRecForm.value.mood" class="btn btn-success btn-next" name ="Next2">Next</button>
+                <button type="button" (click)="showNextFormPage()" *ngIf="movieRecForm.value.emotion" class="btn btn-success btn-next" name ="Next2">Next</button>
             </div>
         </div>
 
@@ -87,12 +87,11 @@
                 </div>
             </div>
             <div class="movie-age-input">
-                <label for="startingYear">From</label>
-                <input type="number" id="startingYear" formControlName="startingYear">
+                <label for="start_release_year">From</label>
+                <input type="number" id="start_release_year" formControlName="start_release_year">
 
-    
-                <label for="endingYear">To</label>
-                <input type="number" id="endingYear" formControlName="endingYear">
+                <label for="last_release_year">To</label>
+                <input type="number" id="last_release_year" formControlName="last_release_year">
 
                 <p>If you have no preference, leave the input fields above blank.</p>
             </div>
@@ -112,35 +111,35 @@
                 </div>
                 <div class="checked-inputs">
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="no-preference-check" formControlName="mpaaRating">
+                        <input class="form-check-input" type="radio" value="none" id="no-preference-check" name="mpaa_rating" formControlName="mpaa_rating">
                         <label class="form-check-label" for="no-preference-check">
                           No preference
                         </label>
                     </div>
 
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="g" id="g-check" formControlName="mpaaRating">
+                        <input class="form-check-input" type="radio" value="G" id="g-check" name="mpaa_rating" formControlName="mpaa_rating">
                         <label class="form-check-label" for="g-check">
                             G
                         </label>
                     </div>
 
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="pg" id="pg-check" formControlName="mpaaRating">
+                        <input class="form-check-input" type="radio" value="PG" id="pg-check" name="mpaa_rating" formControlName="mpaa_rating">
                         <label class="form-check-label" for="pg-check">
                             PG
                         </label>
                     </div>
 
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="pg-13" id="pg-13-check" formControlName="mpaaRating">
+                        <input class="form-check-input" type="radio" value="PG-13" id="pg-13-check" name="mpaa_rating" formControlName="mpaa_rating">
                         <label class="form-check-label" for="pg-13-check">
                             PG-13
                         </label>
                     </div>
 
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="r" id="r-check" formControlName="mpaaRating">
+                        <input class="form-check-input" type="radio" value="R" id="r-check" name="mpaa_rating" formControlName="mpaa_rating">
                         <label class="form-check-label" for="r-check">
                             R/NC-17
                         </label>
@@ -149,7 +148,7 @@
             </div>
             <div class="btn-group">
                 <button type="button" (click)="showLastFormPage()" class="btn btn-warning btn-prev">Back</button>
-                <button type="button" (click)="onSubmit()" *ngIf="movieRecForm.value.mpaaRating" class="btn btn-success btn-submit" name = "Submit">Submit</button>
+                <button type="button" (click)="onSubmit()" *ngIf="movieRecForm.value.mpaa_rating" class="btn btn-success btn-submit" name = "Submit">Submit</button>
             </div>
         </div>
     </form>
