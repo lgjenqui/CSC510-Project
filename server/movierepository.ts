@@ -84,6 +84,7 @@ export class MovieRepository {
       returnGenre.push("Comedy");
       return returnGenre;
     }
+    return returnGenre;
 
   }
 
