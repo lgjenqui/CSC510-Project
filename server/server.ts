@@ -26,11 +26,21 @@ taserver.get('/movies', function (req: express.Request, res: express.Response) {
 })
 
 taserver.post('/recmovies', function (req: express.Request, res: express.Response) {
+  // Parse the request body into its separate parts
   var emotion = req.body.emotion;
   var occasion = req.body.occasion;
   var mpaa_rating = req.body.mpaa_rating;
   var start_release_year = req.body.start_release_year;
   var last_release_year = req.body.last_release_year;
+
+  // Check if a start and last release year are provided - if not, set them to 0 and 9999 respectively
+  if (start_release_year == null) {
+    start_release_year = 0;
+  }
+
+  if (last_release_year == null) {
+    last_release_year = 9999;
+  }
 
   var genre: String[] = movieRepo.getGenre(occasion, emotion);
   var movies: Movie[] = movieRepo.getFilteredMovies(genre, mpaa_rating, start_release_year, last_release_year);

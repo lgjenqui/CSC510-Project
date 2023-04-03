@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormArray, FormControl } from '@angular/forms';
+import { FormBuilder, FormControl, FormArray } from '@angular/forms';
 import { Router } from '@angular/router';
+import { MovieService } from 'src/app/services/movie.service';
+import { Movie } from '../../../../../common/movie';
 
 @Component({
   selector: 'app-homepage',
@@ -12,14 +14,15 @@ export class HomepageComponent {
 
     movieRecForm = this.formBuilder.group({
         occasion: '',
-        mood: '',
-        startingYear: null, 
-        endingYear: null,
-        mpaaRating: null,
+        emotion: '',
+        start_release_year: null, 
+        last_release_year: null,
+        mpaa_rating: ''
     })
 
     constructor(private formBuilder: FormBuilder,
-                private router: Router) {
+                private router: Router,
+                private movieService: MovieService) {
         this.formPage = 0; // indicates no form page should be shown
     }
 
@@ -37,11 +40,14 @@ export class HomepageComponent {
     onSubmit(): void {
         this.formPage++;
 
-        // A temporary sleep for 4s before navigation to show the loading animation
+        // Make a request to the movie service using the form input
+        this.movieService.setMovieRecommendations(JSON.stringify(this.movieRecForm.value));
+
+        // Sleep then navigate to the recommendation page
         setTimeout(() => 
         {
-            this.router.navigate(['/recommendation/morbius']);
+            this.router.navigate(['/recommendation']);
         },
-        3000);
+        1500);
     }
 }
