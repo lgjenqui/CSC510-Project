@@ -1,1 +1,81 @@
-<p>movie-update works!</p>
+<body class="bg-primary">
+    <h1>Add or update a movie</h1>
+    <hr>
+
+    <div class="form-container">
+        <form id="movie-update-form">
+            <div class="col col-1">
+                <div class="form-group">
+                    <label for="movie-title-input">Movie title</label>
+                    <input type="text" class="form-control" id="movie-title-input" placeholder="Pulp fiction">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleFormControlSelect1">Top 3 Actors/Actresses</label>
+                    <input type="text" class="form-control" id="actor-1-input" placeholder="John Travolta">
+                    <input type="text" class="form-control" id="actor-2-input" placeholder="Samuel L. Jackson">
+                    <input type="text" class="form-control" id="actor-3-input" placeholder="Uma Thurman">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleFormControlSelect1">IMDB Rating</label>
+                    <input min="0" max="10" type="number" id="imdb-rating" class="form-control" placeholder="8.9"/>
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleFormControlSelect1">Rotten Tomatoes Rating</label>
+                    <input min="0" max="100" type="number" id="rotton-tomatoes-rating" class="form-control" placeholder="92%"/>
+                  </div>
+            </div>
+            <div class="col col-2">
+                <div class="form-group">
+                    <label for="movie-title-input">Director name</label>
+                    <input type="text" class="form-control" id="movie-title-input" placeholder="Quentin Tarantino">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleFormControlSelect1">Year released</label>
+                    <input min="1750" max="2023" type="number" id="year-released-input" class="form-control" placeholder="1994"/>
+                  </div>
+                  <div class="form-group mpaa-inputs">
+                    <label>MPAA Rating</label>
+                    <hr>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="unrated-mpaa-input" id="unrated-mpaa-input" value="unrated" checked>
+                        <label class="form-check-label" for="unrated-mpaa-input">
+                          Unrated
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="g-mpaa-input" id="g-mpaa-input" value="G">
+                        <label class="form-check-label" for="g-mpaa-input">
+                          G
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="pg-mpaa-input" id="pg-mpaa-input" value="G">
+                        <label class="form-check-label" for="pg-mpaa-input">
+                          PG
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="pg-13-mpaa-input" id="pg-13-mpaa-input" value="PG">
+                        <label class="form-check-label" for="pg-13-mpaa-input">
+                          PG-13
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="nc-17-mpaa-input" id="nc-17-mpaa-input" value="G">
+                        <label class="form-check-label" for="nc-17-mpaa-input">
+                          NC-17
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="r-mpaa-input" id="r-mpaa-input" value="G">
+                        <label class="form-check-label" for="r-mpaa-input">
+                          R
+                        </label>
+                      </div>
+                  </div>
+            </div>
+          </form>
+    </div>
+    <div class="clear-float"></div>
+    <button class="btn btn-success">Submit</button>
+</body>

@@ -8,7 +8,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { RecommendationComponent } from './components/recommendation/recommendation.component';
 import { MovieService } from './services/movie.service';
-import { MovieUpdateComponent } from './movie-update/movie-update.component';
+import { MovieUpdateComponent } from './components/movie-update/movie-update.component';
 
 @NgModule({
   declarations: [
