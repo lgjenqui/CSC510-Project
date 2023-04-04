@@ -27,6 +27,6 @@ jobs:
         cache: 'npm'
     - name: change dir, npm install, and test
       run: |
-        cd test-unit
+        cd tests-unit
         npm install
         npm run tests
