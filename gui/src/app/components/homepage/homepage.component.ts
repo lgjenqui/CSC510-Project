@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormControl, FormArray } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MovieService } from 'src/app/services/movie.service';
-import { Movie } from '../../../../../common/movie';
 
 @Component({
   selector: 'app-homepage',
