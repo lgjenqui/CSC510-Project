@@ -30,6 +30,5 @@ jobs:
         npm --prefix gui run install
         npm --prefix server run install
         npm --prefix tests-unit run install
-        npm --prefix tests-acceptance run install
     - name: run unit tests
       run: npm --prefix tests-unit run test
