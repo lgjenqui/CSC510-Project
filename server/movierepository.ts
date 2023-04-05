@@ -119,6 +119,6 @@ export class MovieRepository {
         movie.release_year <= last_release_year &&
         genres.includes(movie.genre);
     });
-    return returnMovies;
+    return returnMovies.sort(() => Math.random()-0.5);
   }
 }
