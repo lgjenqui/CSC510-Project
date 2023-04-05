@@ -27,8 +27,14 @@ jobs:
         cache: 'npm'
     - name: npm install
       run: |
-        npm --prefix /gui run install
-        npm --prefix /server run install
-        npm --prefix /tests-unit run install
+        cd gui
+        npm install
+        cd ../server
+        npm install
+        cd ../tests-unit
+        npm install
+        cd ..
     - name: run unit tests
-      run: npm --prefix /tests-unit run test
+      run: |
+        cd test-unit
+        npm test
