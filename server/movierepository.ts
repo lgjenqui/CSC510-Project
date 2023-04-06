@@ -1,5 +1,5 @@
 import { Movie } from '../common/movie';
-import {  parse } from 'csv-parse';
+import { parse } from 'csv-parse';
 import * as path from "path";
 import * as fs from "fs";
 
@@ -8,13 +8,13 @@ export class MovieRepository {
 
   async populateMoviesRepositoryFromCSV() {
     const csvFilePath = path.resolve(__dirname, '../data/movies.csv');
-    
-    const headers = ['title', 'genre', 'runtime', 'mpaa_rating', 'release_year', 
-    'imdb_rating', 'critics_score', 'director', 'actor1', 'actor2', 'actor3', 
-    'actor4', 'actor5'];
-    
-    const fileContent = fs.readFileSync(csvFilePath, {encoding: 'utf-8'});
-    
+
+    const headers = ['title', 'genre', 'runtime', 'mpaa_rating', 'release_year',
+      'imdb_rating', 'critics_score', 'director', 'actor1', 'actor2', 'actor3',
+      'actor4', 'actor5'];
+
+    const fileContent = fs.readFileSync(csvFilePath, { encoding: 'utf-8' });
+
     return new Promise<void>((resolve, reject) => {
       parse(fileContent, {
         delimiter: ',',
@@ -32,8 +32,7 @@ export class MovieRepository {
       });
     });
   }
-  
-  
+
   getGenre(occasion: String, emotion: String): String[] {
     var returnGenre: string[] = [];
     if (occasion == "Date Night" && emotion == "Happy") {
@@ -102,6 +101,7 @@ export class MovieRepository {
     return result;
   }
 
+
   getAllMovies(): Movie[] {
     return this.movies;
   }
@@ -111,8 +111,8 @@ export class MovieRepository {
     var returnMovies: Movie[] = this.movies.filter((movie) => {
       if (mpaa_rating == "none") {
         return movie.release_year >= start_release_year &&
-        movie.release_year <= last_release_year &&
-        genres.includes(movie.genre);
+          movie.release_year <= last_release_year &&
+          genres.includes(movie.genre);
       }
       return movie.mpaa_rating == mpaa_rating &&
         movie.release_year >= start_release_year &&
