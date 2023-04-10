@@ -64,3 +64,16 @@ button {
     width: 100%;
     margin: auto;
 }
+
+.request-error-warning, .request-success {
+    width: 40% !important;
+    margin: 25px auto auto auto;
+    text-align: center;
+    font-size: 20px;
+}
+
+.spinner-border {
+    width: 100px;
+    height: 100px;
+    margin-top: 30px;
+}

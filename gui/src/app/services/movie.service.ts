@@ -83,12 +83,13 @@ export class MovieService {
     }
 
     updateMovie(body: string): Observable<any> {
+        console.log(body)
         const httpOptions = {
             headers: new HttpHeaders({
                 'Content-Type': 'application/json'
             }),
             observe: "response" as "body"
         }
-        return this.http.post(this.baseUrl + "updateMovie", body, httpOptions);
+        return this.http.post(this.baseUrl + "movies", body, httpOptions);
     }
 }

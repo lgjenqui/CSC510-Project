@@ -51,8 +51,7 @@ export class RecommendationComponent {
           if (err.url) {
             this.currentMoviePosterPath = err.url;
           }
-        },
-        () => console.log('requests done')
+        }
     )
   }
 
