@@ -29,7 +29,7 @@ Given(/^I am at the home page$/, async () => {
 
 
 When(/^I click on Date Night$/, async () => {
-  const radioButton = element(by.css('input[name="occasion"][value="date night"]'));
+  const radioButton = element(by.css('input[name="occasion"][value="Date Night"]'));
   await radioButton.click();
   await $("button[name='Next1']").click();
 });

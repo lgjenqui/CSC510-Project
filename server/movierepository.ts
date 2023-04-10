@@ -1,32 +1,38 @@
 import { Movie } from '../common/movie';
-import {  parse } from 'csv-parse';
+import { parse } from 'csv-parse';
 import * as path from "path";
 import * as fs from "fs";
 
 export class MovieRepository {
   movies: Movie[] = [];
 
-  populateMoviesRepositoryFromCSV() {
+  async populateMoviesRepositoryFromCSV() {
     const csvFilePath = path.resolve(__dirname, '../data/movies.csv');
-    
-    const headers = ['title', 'genre', 'runtime', 'mpaa_rating', 'release_year', 
-    'imdb_rating', 'critics_score', 'director', 'actor1', 'actor2', 'actor3', 
-    'actor4', 'actor5'];
-    
-    const fileContent = fs.readFileSync(csvFilePath, {encoding: 'utf-8'});
-    
-    parse(fileContent, {
-		delimiter: ',',
-		columns: headers,
-	}, (error, result:Movie[]) => {
-		if (error) {
-			console.error(error);
-		}
-		for (var i = 1; i < result.length; i++) {
-			this.add(result[i]);
-		}
-	});
+
+    const headers = ['title', 'genre', 'runtime', 'mpaa_rating', 'release_year',
+      'imdb_rating', 'critics_score', 'director', 'actor1', 'actor2', 'actor3',
+      'actor4', 'actor5'];
+
+    const fileContent = fs.readFileSync(csvFilePath, { encoding: 'utf-8' });
+
+    return new Promise<void>((resolve, reject) => {
+      parse(fileContent, {
+        delimiter: ',',
+        columns: headers,
+      }, (error, result: Movie[]) => {
+        if (error) {
+          console.error(error);
+          reject(error);
+        } else {
+          for (var i = 1; i < result.length; i++) {
+            this.add(result[i]);
+          }
+          resolve();
+        }
+      });
+    });
   }
+
   getGenre(occasion: String, emotion: String): String[] {
     var returnGenre: string[] = [];
     if (occasion == "Date Night" && emotion == "Happy") {
@@ -84,6 +90,8 @@ export class MovieRepository {
       returnGenre.push("Comedy");
       return returnGenre;
     }
+    return returnGenre;
+
   }
 
   add(movie: Movie): Movie {
@@ -92,6 +100,7 @@ export class MovieRepository {
     this.movies.push(result);
     return result;
   }
+
 
   getAllMovies(): Movie[] {
     return this.movies;
@@ -102,14 +111,14 @@ export class MovieRepository {
     var returnMovies: Movie[] = this.movies.filter((movie) => {
       if (mpaa_rating == "none") {
         return movie.release_year >= start_release_year &&
-        movie.release_year <= last_release_year &&
-        genres.includes(movie.genre);
+          movie.release_year <= last_release_year &&
+          genres.includes(movie.genre);
       }
       return movie.mpaa_rating == mpaa_rating &&
         movie.release_year >= start_release_year &&
         movie.release_year <= last_release_year &&
         genres.includes(movie.genre);
     });
-    return returnMovies;
+    return returnMovies.sort(() => Math.random()-0.5);
   }
 }
