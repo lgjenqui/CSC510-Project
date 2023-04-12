@@ -59,6 +59,10 @@ button {
     text-align: left;
 }
 
+.approximation-label-container {
+    width: 200px;
+}
+
 .checkboxes input {
     width: 15px;
     height: 15px;
