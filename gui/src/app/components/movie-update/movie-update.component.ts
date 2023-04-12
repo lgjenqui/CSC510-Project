@@ -39,7 +39,8 @@ export class MovieUpdateComponent {
     let form = this.movieUpdateForm.value;
     return (form.title === "" || form.genre === "" || form.runtime === null || form.mpaa_rating === ""
       || form.release_year === null || form.imdb_rating === null || form.critics_score === null
-      || form.director === "" || form.actor1 === "" || form.actor2 === "" || form.actor3 === "");
+      || form.director === "" || form.actor1 === "" || form.actor2 === "" || form.actor3 === ""
+      || form.imdb_rating! > 10 || form.imdb_rating! < 0 || form.critics_score! > 100 || form.critics_score! < 0);
   }
 
   onSubmit() {
