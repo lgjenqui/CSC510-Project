@@ -91,6 +91,7 @@ button {
     width: 80%;
     margin: auto;
     clear: both;
+    min-width: 1200px;
 }
 
 .form-group {
