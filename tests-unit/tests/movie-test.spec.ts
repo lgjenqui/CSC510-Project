@@ -1,4 +1,4 @@
-
+export {}; // To guarantee that Typescript considers this its own module
 const { Movie } = require('../../common/movie');
 
 describe('Movie', () => {
