@@ -4,6 +4,7 @@ import bodyParser = require("body-parser");
 
 import { Movie } from '../common/movie';
 import { MovieRepository } from './movierepository';
+import { MovieSearchForm } from '../common/movieSearchForm'
 
 var taserver = express();
 var movieRepo: MovieRepository = new MovieRepository();
@@ -118,4 +119,19 @@ taserver.post('/recmovies', function (req: express.Request, res: express.Respons
 
 taserver.listen(3000, function () {
   console.log('Server listening on port 3000!')
+})
+
+taserver.post('/findMovies', function (req: express.Request, res: express.Response) {
+  // Parse the request body into a movie
+  const form: MovieSearchForm = req.body as MovieSearchForm;
+
+  // Check if at least one field was provided - if not, return an error code
+  if (form.title === "" && form.genre === "" && form.runtime === null && form.mpaa_rating === ""
+  && form.release_year === null && form.imdb_rating === null && form.critics_score === null
+  && form.director === "" && form.actor1 === "" && form.actor2 === "" && form.actor3 === "") {
+    res.status(422).send(JSON.stringify(form));
+  }
+  
+  // Find and return movies matching the qualifications
+  res.status(200).send(JSON.stringify(movieRepo.findMovies(form)));
 })
