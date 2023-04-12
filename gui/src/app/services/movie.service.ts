@@ -81,4 +81,14 @@ export class MovieService {
         // Call the newly-constructed endpoint
         return this.http.get(endpoint);
     }
+
+    updateMovie(body: string): Observable<any> {
+        const httpOptions = {
+            headers: new HttpHeaders({
+                'Content-Type': 'application/json'
+            }),
+            observe: "response" as "body"
+        }
+        return this.http.post(this.baseUrl + "movies", body, httpOptions);
+    }
 }
