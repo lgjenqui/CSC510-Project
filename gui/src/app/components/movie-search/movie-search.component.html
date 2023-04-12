@@ -110,11 +110,11 @@
 
     <div class="panel panel-2" *ngIf="updateSucceeded == true && movies.length > 0">
         <h3>Good news! It looks like the following movies match your criteria:</h3>
-        <p *ngIf="lastReqApproximateReleaseYear == true">
+        <p *ngIf="lastReqApproximateReleaseYear == true && lastReqApproximateRuntime == false">
             (Within 10 years of your stated release year)
         </p>
 
-        <p *ngIf="lastReqApproximateRuntime == true">
+        <p *ngIf="lastReqApproximateRuntime == true && lastReqApproximateReleaseYear == false">
             (Within 20 minutes of your stated runtime)
         </p>
 
