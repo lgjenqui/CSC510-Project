@@ -83,7 +83,6 @@ export class MovieService {
     }
 
     updateMovie(body: string): Observable<any> {
-        console.log(body)
         const httpOptions = {
             headers: new HttpHeaders({
                 'Content-Type': 'application/json'

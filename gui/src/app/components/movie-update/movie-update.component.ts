@@ -35,6 +35,13 @@ export class MovieUpdateComponent {
     this.loading = false;
   }
 
+  inputIsInvalid(): boolean {
+    let form = this.movieUpdateForm.value;
+    return (form.title === "" || form.genre === "" || form.runtime === null || form.mpaa_rating === ""
+      || form.release_year === null || form.imdb_rating === null || form.critics_score === null
+      || form.director === "" || form.actor1 === "" || form.actor2 === "" || form.actor3 === "");
+  }
+
   onSubmit() {
     // Reset the booleans tracking the success and failure of the request
     this.updateSucceeded = false;
@@ -42,22 +49,30 @@ export class MovieUpdateComponent {
     this.infoIsCorrect = true;
     this.loading = true;
 
-    // Make the request to the movie service and update the booleans appropriately
-    this.movieService.updateMovie(JSON.stringify(this.movieUpdateForm.value)).subscribe(
-      res => {
-        if (res.status == 200) {
-          this.updateSucceeded = true;
-        } else {
-          this.updateFailed = true;
-          if (res.status == 206) {
+    // Check if all fields are provided
+    if (this.inputIsInvalid()) {
+      this.updateFailed = true;
+      this.infoIsCorrect = false;
+      this.loading = false;
+    } else {
+      // Make the request to the movie service and update the booleans appropriately
+      this.movieService.updateMovie(JSON.stringify(this.movieUpdateForm.value)).subscribe(
+        res => {
+          if (res.status == 200) {
+            this.updateSucceeded = true;
+          } else {
+            this.updateFailed = true;
+          }
+          this.loading = false;
+        },
+        (err) => {
+          if (err.status == 422) {
             this.infoIsCorrect = false;
           }
+          this.updateFailed = true;
+          this.loading = false;
         }
-        this.loading = false;
-      },
-      (err) => {
-        this.updateFailed = true;
-        this.loading = false;
-      })
+      )
+    }
   }
 }
