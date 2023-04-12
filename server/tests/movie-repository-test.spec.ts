@@ -1,5 +1,5 @@
 
-const { MovieRepository } = require('../../server/movierepository');
+const { MovieRepository } = require('../movierepository');
 const { Movie } = require('../../common/movie');
 
 describe('MovieRepository', () => {

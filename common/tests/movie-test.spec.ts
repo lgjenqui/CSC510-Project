@@ -1,5 +1,5 @@
 
-const { Movie } = require('../../common/movie');
+const { Movie } = require('../movie');
 
 describe('Movie', () => {
   let movie: typeof Movie;

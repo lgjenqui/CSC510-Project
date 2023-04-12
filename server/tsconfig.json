@@ -11,5 +11,5 @@
      "outDir": "compiledCode",
      "suppressImplicitAnyIndexErrors": true
    },
-   "compileOnSave": true,
+   "compileOnSave": true
 }
