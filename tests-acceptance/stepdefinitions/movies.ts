@@ -170,8 +170,16 @@ When(/^I enter the Rotten Tomatoes rating of the movie: (.+)$/, async (rottenTom
   
   
   When(/^I click the ‘Submit’ button$/, async () => {
+      // const submitButton = element(by.id('submit-form'));
+      // await browser.executeScript('arguments[0].scrollIntoView()', submitButton.getWebElement());
+      // await submitButton.click();
       const submitButton = element(by.id('submit-form'));
-      await submitButton.click();
+      await browser.sleep(300);
+      await browser.executeScript('window.scrollTo(0,document.body.scrollHeight)');
+      await browser.sleep(300);
+    await browser.actions().mouseMove(submitButton).perform();
+    await browser.sleep(300);
+    await browser.actions().click().perform();
   });
 
   Then('I should see a success message on the page', async function () {
