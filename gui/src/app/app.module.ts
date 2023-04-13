@@ -8,12 +8,16 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { RecommendationComponent } from './components/recommendation/recommendation.component';
 import { MovieService } from './services/movie.service';
+import { MovieUpdateComponent } from './components/movie-update/movie-update.component';
+import { MovieSearchComponent } from './components/movie-search/movie-search.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomepageComponent,
-    RecommendationComponent   
+    RecommendationComponent,
+    MovieUpdateComponent,
+    MovieSearchComponent   
   ],
   imports: [
     BrowserModule,

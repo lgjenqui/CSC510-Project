@@ -4,6 +4,7 @@ import bodyParser = require("body-parser");
 
 import { Movie } from '../common/movie';
 import { MovieRepository } from './movierepository';
+import { MovieSearchForm } from '../common/movieSearchForm'
 
 var taserver = express();
 var movieRepo: MovieRepository = new MovieRepository();
@@ -41,9 +42,10 @@ taserver.post('/movies', function (req: express.Request, res: express.Response) 
   movie.actor3 = req.body.actor3;
   movie.actor4 = "";
   movie.actor5 = "";
-  if (movie.title == null || movie.genre == null || movie.runtime == null || movie.mpaa_rating == null || movie.release_year == null || movie.imdb_rating == null || movie.critics_score == null || movie.director == null || movie.actor1 == null || movie.actor2 == null || movie.actor3 == null || movie.actor4 == null || movie.actor5 == null) {
-    res.status(206).send(JSON.stringify(movie));
+  if (movie.title == null || movie.genre == null || movie.runtime == null || movie.mpaa_rating == null || movie.release_year == null || movie.imdb_rating == null || movie.critics_score == null || movie.director == null || movie.actor1 == null || movie.actor2 == null || movie.actor3 == null) {
+    res.status(422).send(JSON.stringify(movie));
   }
+
   else {
     var movies: Movie[] = movieRepo.getAllMovies();
     var exists: boolean = false;
@@ -56,18 +58,19 @@ taserver.post('/movies', function (req: express.Request, res: express.Response) 
         movies[i].release_year = movie.release_year;
         movies[i].imdb_rating = movie.imdb_rating;
         movies[i].critics_score = movie.critics_score;
+        movies[i].director = movie.director;
         movies[i].actor1 = movie.actor1;
         movies[i].actor2 = movie.actor2;
         movies[i].actor3 = movie.actor3;
         res.status(200).send(JSON.stringify(movie));
+        return;
       }
     }
     if (!exists) {
       movieRepo.add(movie);
-      res.status(200).send(JSON.stringify(movieRepo.getAllMovies()));
+      res.status(200).send(JSON.stringify(movie));
     }
   }
-
 })
 
 taserver.post('/recmovies', function (req: express.Request, res: express.Response) {
@@ -116,4 +119,19 @@ taserver.post('/recmovies', function (req: express.Request, res: express.Respons
 
 taserver.listen(3000, function () {
   console.log('Server listening on port 3000!')
+})
+
+taserver.post('/findMovies', function (req: express.Request, res: express.Response) {
+  // Parse the request body into a movie
+  const form: MovieSearchForm = req.body as MovieSearchForm;
+
+  // Check if at least one field was provided - if not, return an error code
+  if (form.title === "" && form.genre === "" && form.runtime === null && form.mpaa_rating === ""
+  && form.release_year === null && form.imdb_rating === null && form.critics_score === null
+  && form.director === "" && form.actor1 === "" && form.actor2 === "" && form.actor3 === "") {
+    res.status(422).send(JSON.stringify(form));
+  }
+  
+  // Find and return movies matching the qualifications
+  res.status(200).send(JSON.stringify(movieRepo.findMovies(form)));
 })
