@@ -11,7 +11,7 @@
         <!-- Page 1 of the form -->
         <div *ngIf="formPage == 1" class="questionnaire">
             <div class="prompt">
-                <h3>What is the occasion?</h3>
+                <h3 id="prompt-header">What is the occasion?</h3>
                 <hr>
             </div>
             <div class="checked-inputs" >
@@ -60,7 +60,7 @@
         <div *ngIf="formPage == 2" class="questionnaire">
             <div class="emotion-select">
                 <div class="prompt">
-                    <h3>How are you today?</h3>
+                    <h3 id="prompt-header">How are you today?</h3>
                     <hr>
                 </div>
                 <input class="emotion-select-input" type="radio" name="emotion" id="happy-image" value="Happy" formControlName="emotion">
@@ -82,7 +82,7 @@
         <div *ngIf="formPage == 3" class="questionnaire">
             <div class="movie-age">
                 <div class="prompt">
-                    <h3>How old would you like the movie to be?</h3>
+                    <h3 id="prompt-header">How old would you like the movie to be?</h3>
                     <hr>
                 </div>
             </div>
@@ -106,7 +106,7 @@
         <div *ngIf="formPage == 4" class="questionnaire">
             <div class="MPAA-rating">
                 <div class="prompt">
-                    <h3>Do you have a preference for the age-appropriateness of the movie?</h3>
+                    <h3 id="prompt-header">Do you have a preference for the age-appropriateness of the movie?</h3>
                     <hr>
                 </div>
                 <div class="checked-inputs">
