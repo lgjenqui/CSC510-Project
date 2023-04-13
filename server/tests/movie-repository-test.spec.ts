@@ -1,5 +1,7 @@
+const { MovieRepository } = require('../movierepository');
+
 export {}; // To guarantee that Typescript considers this its own module
-const { MovieRepository } = require('../../server/movierepository');
+
 const { Movie } = require('../../common/movie');
 
 describe('MovieRepository', () => {
