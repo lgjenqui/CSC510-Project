@@ -91,18 +91,16 @@ Then(/^I see "([^\"]*)" movie suggestion based on my answers$/, async (name) => 
 // Feature 2
 // /////////
 
-Given(/^I am on the home page$/, async () => {
-  await browser.get('http://www.example.com');
-  const pageTitle = await browser.getTitle();
-  expect(pageTitle).to.equal('Example Domain');
-});
+// Given(/^I am on the home page$/, async () => {
+//   await browser.get('http://www.example.com');
+//   const pageTitle = await browser.getTitle();
+//   expect(pageTitle).to.equal('Example Domain');
+// });
 
-var base_url = "http://localhost:3000/";
+// var base_url = "http://localhost:3000/";
 
 Given(/^I am at the Add or update a movie page$/, async () => {
-  await browser.get("http://localhost:4200/");
-  await expect(browser.getTitle()).to.eventually.equal('Pick a movie for me please!');
-  await $("a.nav-link[href='/update-movies']").click();
+  await browser.get("http://localhost:4200/update-movies");
 });
 
 Given(/^I see the form to add or update a movie$/, async () => {
@@ -208,9 +206,6 @@ When(/^I enter the Rotten Tomatoes rating of the movie: (.+)$/, async (rottenTom
   
   
   When(/^I click the ‘Submit’ button$/, async () => {
-      // const submitButton = element(by.id('submit-form'));
-      // await browser.executeScript('arguments[0].scrollIntoView()', submitButton.getWebElement());
-      // await submitButton.click();
       const submitButton = element(by.id('submit-form'));
       await browser.sleep(300);
       await browser.executeScript('window.scrollTo(0,document.body.scrollHeight)');
@@ -226,3 +221,59 @@ When(/^I enter the Rotten Tomatoes rating of the movie: (.+)$/, async (rottenTom
     const successMessageText = await successMessageElement.getText();
     await expect(successMessageText).to.equal(expectedMessage);
   });
+  
+// /////////
+// Feature 3
+// /////////
+
+Given(/^I am at the Search page$/, async () => {
+  await browser.get("http://localhost:4200/search-movies");
+  await browser.sleep(500);
+});
+
+Given(/^I see the title search bar with filters below$/, async () => {
+  const titleSearchBar = element(by.id('movie-title-input'));
+  const genreFilter = element(by.id('genre-input'));
+  const mpaaFilter = element(by.id('mpaa-select'));
+  expect(await titleSearchBar.isPresent()).to.be.true;
+  expect(await genreFilter.isPresent()).to.be.true;
+  expect(await mpaaFilter.isPresent()).to.be.true;
+});
+
+When(/^I type in a title: (.+)$/, async (title) => {
+  const titleSearchBar = element(by.id('movie-title-input'));
+  await titleSearchBar.sendKeys(title);
+});
+
+When(/^I select a genre: (.+)$/, async (genre) => {
+  const genreFilter = element(by.id('genre-input'));
+  await genreFilter.sendKeys(genre);
+});
+
+When(/^I select an MPAA Rating: (.+)$/, async (mpaa) => {
+  const mpaaFilter = await element(by.id('mpaa-select'));
+  const option = await mpaaFilter.element(by.css(`option[value="${mpaa}"]`));
+  await option.click();
+});
+
+
+When(/^I click the Search button$/, async function () {
+  const submitButton = await element(by.id('search-button'));
+  await submitButton.click();
+  await browser.sleep(300);
+});
+
+Then(/^I see a filtered list of movies below the search$/, async () => {
+  await browser.sleep(300);
+  const header = element(by.id('successHeading'));
+  const headerText = await header.getText();
+  expect(headerText).equal("Good news! It looks like the following movies match your criteria:");
+});
+
+
+
+
+  
+
+
+
