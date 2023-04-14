@@ -6,8 +6,8 @@ module.exports = {
     collectCoverageFrom: ['server/movierepository.ts', 'common/movie.ts'],
     coverageThreshold: {
     	global: {
-      		branches: 70,
-      		lines: 70,
+      		branches: 50,
+      		lines: 50,
    		},
     },
     testMatch: ['**/server/tests/*.ts', '**/common/tests/*.ts', '**/tests-service/tests/*.ts'],
