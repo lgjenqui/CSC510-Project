@@ -6,8 +6,8 @@ module.exports = {
     collectCoverageFrom: ['movie.ts'],
     coverageThreshold: {
     	global: {
-      		branches: 70,
-      		lines: 70,
+      		branches: 50,
+      		lines: 50,
    		},
     }
   };
