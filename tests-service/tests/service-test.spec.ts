@@ -5,7 +5,7 @@ const base_url = "http://localhost:3000/";
 
 describe("The server's Get Movies endpoint", () => {
   it("Checks that 651 movies are returned by the endpoint", (done) => {
-    request.get(base_url + "movies", (error:Error | null, response:request.Response | null, body:string) => {
+    request.get(base_url + "movies", (error: Error | null, response: request.Response | null, body: string) => {
       expect(response?.statusCode).toBe(200);
       const movies = JSON.parse(body);
 
@@ -26,21 +26,21 @@ describe("The server's Get Movies endpoint", () => {
       };
 
       const lastMovie = {
-      
-      "actor1": "Miley Cyrus",
-      "actor2": "Demi Moore",
-      "actor3": "Ashley Greene",
-      "actor4": "Douglas Booth",
-      "actor5": "Adam G. Sevani",
-      "critics_score": "17",
-      "director": "Liza Azuelos",
-      "genre": "Comedy",
-      "imdb_rating": "4.2",
-      "mpaa_rating": "PG-13",
-      "release_year": "2012",
-      "runtime": "97",
-      "title": "LOL",
-        
+
+        "actor1": "Miley Cyrus",
+        "actor2": "Demi Moore",
+        "actor3": "Ashley Greene",
+        "actor4": "Douglas Booth",
+        "actor5": "Adam G. Sevani",
+        "critics_score": "17",
+        "director": "Liza Azuelos",
+        "genre": "Comedy",
+        "imdb_rating": "4.2",
+        "mpaa_rating": "PG-13",
+        "release_year": "2012",
+        "runtime": "97",
+        "title": "LOL",
+
       };
 
       expect(movies.length).toEqual(651);
@@ -65,7 +65,7 @@ describe("The server's Post recmovies endpoint", () => {
     request.post(
       base_url + "recmovies",
       { json: requestData },
-      (error:Error | null, response:request.Response | null, body:string) => {
+      (error: Error | null, response: request.Response | null, body: string) => {
         expect(response?.statusCode).toBe(200);
         done();
       }
@@ -84,9 +84,9 @@ describe("The server's Post recmovies endpoint", () => {
     request.post(
       base_url + "recmovies",
       { json: requestData },
-      (error:Error | null, response:request.Response | null, body:string) => {
+      (error: Error | null, response: request.Response | null, body: string) => {
         expect(response?.statusCode).toBe(204);
-        expect(body).toEqual("[]");
+        expect(body).toEqual(undefined);
         done();
       }
     );
@@ -104,7 +104,7 @@ describe("The server's Post recmovies endpoint", () => {
     request.post(
       base_url + "recmovies",
       { json: requestData },
-      (error:Error | null, response:request.Response | null, body:string) => {
+      (error: Error | null, response: request.Response | null, body: string) => {
         expect(response?.statusCode).toBe(206);
         done();
       }
