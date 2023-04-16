@@ -37,8 +37,8 @@
                         <input min="0" max="100" type="number" id="rotten-tomatoes-rating" class="form-control" formControlName="critics_score"/>
                     </div>
                     <div class="form-group">
-                        <label for="movie-title-input">Director name</label>
-                        <input type="text" class="form-control" id="movie-title-input" formControlName="director">
+                        <label for="director-name">Director name</label>
+                        <input type="text" class="form-control" id="director-name" formControlName="director">
                     </div>
                     <div class="form-group">
                         <label for="year-released-input">Year released</label>
@@ -84,7 +84,7 @@
                 </div>
               </form>
         </div>
-        <button class="btn btn-info" (click)="onSubmit()">Search</button>
+        <button class="btn btn-info" (click)="onSubmit()" id = "search-button">Search</button>
     
         <div *ngIf="updateFailed === true && infoIsCorrect === false" class="request-error-warning update-failure incorrect-info">
           <div class="alert alert-dismissible alert-warning">
@@ -109,7 +109,7 @@
     </div>
 
     <div class="panel panel-2" *ngIf="updateSucceeded == true && movies.length > 0">
-        <h3>Good news! It looks like the following movies match your criteria:</h3>
+        <h3 id = "successHeading">Good news! It looks like the following movies match your criteria:</h3>
         <p *ngIf="lastReqApproximateReleaseYear == true">
             (Within 10 years of your stated release year)
         </p>
