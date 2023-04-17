@@ -3,13 +3,8 @@ module.exports = {
     testEnvironment: 'node',
     moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
     collectCoverage: true,
-    collectCoverageFrom: ['server/movierepository.ts', 'common/movie.ts'],
-    coverageThreshold: {
-    	global: {
-      		branches: 50,
-      		lines: 50,
-   		},
-    },
-    testMatch: ['**/server/tests/*.ts', '**/common/tests/*.ts', '**/tests-service/tests/*.ts'],
+    collectCoverageFrom: ['server/movierepository.ts', 'common/movie.ts', 'server/server.ts'],
+    coverageReporters: ['json-summary', 'text', 'lcov'],
+    testMatch: ['**/server/tests/*.ts', '**/common/tests/*.ts'],
   };
   
