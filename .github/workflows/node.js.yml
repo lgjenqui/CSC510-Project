@@ -37,7 +37,4 @@ jobs:
         cd ..
     - name: Run Tests and Coverage
       run: |
-        cd server
-        npm test
-        cd ../common
         npm test
