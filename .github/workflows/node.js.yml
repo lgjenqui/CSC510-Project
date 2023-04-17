@@ -37,4 +37,4 @@ jobs:
         cd ..
     - name: Run Tests and Coverage
       run: |
-        npm test
+        npm run test:badges
