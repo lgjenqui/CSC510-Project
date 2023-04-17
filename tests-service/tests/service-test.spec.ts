@@ -110,6 +110,40 @@ describe("The server's Post recmovies endpoint", () => {
       }
     );
   });
+
+
+
+
+
+
+
+  describe("The server's Post findMovies endpoint", () => {
+    it("Returns status code 200 and a movie that was filtered", (done) => {
+      const requestData = {
+        title: "",
+        director: "",
+        mpaa_rating: "",
+        actor1: "",
+        actor2: "",
+        actor3: "",
+        genre: "Drama",
+        runtime: 80,
+        release_year: 2013,
+        imdb_rating: 5.5,
+        critics_score: 45
+      };
+
+      request.post(
+        base_url + "findMovies",
+        { json: requestData },
+        (error: Error | null, response: request.Response | null, body: string) => {
+          expect(response?.statusCode).toBe(200);
+          done();
+        }
+      );
+    });
+  });
+
 });
 
 

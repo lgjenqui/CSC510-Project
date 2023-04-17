@@ -251,7 +251,6 @@ describe('MovieRepository', () => {
       expect(movieRepository.getAllMovies().length).toBe(651);
       const form = new MovieSearchForm();
       form.title = "";
-      form.genre = "";
       form.director = "";
       form.mpaa_rating = "";
       form.actor1 = "";
@@ -259,10 +258,15 @@ describe('MovieRepository', () => {
       form.actor3 = "";
       form.genre = "Drama";
       form.approximate_runtime = false;
+      form.runtime = 80;
+      form.release_year = 2013;
+      form.imdb_rating = 5.5;
+      form.critics_score = 45;
       form.approximate_release_year = false;
       const searchMovies = movieRepository.findMovies(form);
 
       expect(searchMovies).toHaveLength(1);
+      expect(searchMovies[0].title).toBe('Filly Brown');
     });
 
   });

@@ -81,7 +81,7 @@ taserver.post('/recmovies', function (req: express.Request, res: express.Respons
   }
   var occasion = req.body.occasion;
   if (occasion != "Date Night" && occasion != "Family Movie Night" && occasion != "Movie With Friends" && occasion != "Bored and Alone") {
-    res.status(422).send(JSON.stringify(ocasion));
+    res.status(422).send(JSON.stringify(occasion));
   }
   var mpaa_rating = req.body.mpaa_rating;
   var start_release_year = req.body.start_release_year;
