@@ -1,9 +1,9 @@
 # The "PickAMovieForMePlease" web application
 
-![Coverage Branches](./coverage/badge-branches.svg)
-![Coverage Functions](./coverage/badge-functions.svg)
-![Coverage Lines](./coverage/badge-lines.svg)
-![Coverage Statements](./coverage/badge-statements.svg)
+![Coverage Branches](./badges/badge-branches.svg)
+![Coverage Functions](./badges/badge-functions.svg)
+![Coverage Lines](./badges/badge-lines.svg)
+![Coverage Statements](./badges/badge-statements.svg)
 
 This is the repository of a project to demonstrate Software
 Engineering concepts learned in CSC 510 using a movie recomendation system
