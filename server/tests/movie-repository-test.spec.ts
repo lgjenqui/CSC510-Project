@@ -1,27 +1,29 @@
+import { MovieSearchForm } from "../../common/movieSearchForm";
+
 const { MovieRepository } = require('../movierepository');
 
-export {}; // To guarantee that Typescript considers this its own module
+export { }; // To guarantee that Typescript considers this its own module
 
 const { Movie } = require('../../common/movie');
 
 describe('MovieRepository', () => {
   let movieRepository: typeof MovieRepository;
-  let movies: typeof Movie[] = [{        
-    title: 'Movie 1',        
-    genre: 'Action',        
-    runtime: 120,        
-    mpaa_rating: 'PG-13',        
-    release_year: 2010,        
-    imdb_rating: 7.5,        
-    critics_score: 80,        
-    director: 'Director 1',        
-    actor1: 'Actor 1',        
-    actor2: 'Actor 2',        
-    actor3: 'Actor 3',        
-    actor4: 'Actor 4',        
-    actor5: 'Actor 5',      
+  let movies: typeof Movie[] = [{
+    title: 'Movie 1',
+    genre: 'Action',
+    runtime: 120,
+    mpaa_rating: 'PG-13',
+    release_year: 2010,
+    imdb_rating: 7.5,
+    critics_score: 80,
+    director: 'Director 1',
+    actor1: 'Actor 1',
+    actor2: 'Actor 2',
+    actor3: 'Actor 3',
+    actor4: 'Actor 4',
+    actor5: 'Actor 5',
   }];
-      
+
 
   beforeEach(() => {
     movieRepository = new MovieRepository();
@@ -30,15 +32,15 @@ describe('MovieRepository', () => {
   describe('populateMoviesRepositoryFromCSV', () => {
     it('should populate the movies repository from the CSV file', async () => {
       jest.spyOn(movieRepository, 'add');
-    
+
       await movieRepository.populateMoviesRepositoryFromCSV();
-    
+
       expect(movieRepository.add).toHaveBeenCalledTimes(651);
       expect(movieRepository.getAllMovies().length).toBe(651);
     });
-    
+
   });
-  
+
 
   describe('getGenre', () => {
     it('should return the correct genre for a "Date Night" occasion and "Happy" emotion', () => {
@@ -122,7 +124,7 @@ describe('MovieRepository', () => {
       const result = movieRepository.getGenre(occasion, emotion);
 
       // Assert
-      expect(result).toEqual(['Action','Adventure','Sci-Fi']);
+      expect(result).toEqual(['Action', 'Adventure', 'Sci-Fi']);
     });
 
     it('should return the correct genre for a "Movie With Friends" occasion and "Neutral" emotion', () => {
@@ -134,7 +136,7 @@ describe('MovieRepository', () => {
       const result = movieRepository.getGenre(occasion, emotion);
 
       // Assert
-      expect(result).toEqual(['Mystery','Suspense']);
+      expect(result).toEqual(['Mystery', 'Suspense']);
     });
 
     it('should return the correct genre for a "Movie With Friends" occasion and "Sad" emotion', () => {
@@ -158,7 +160,7 @@ describe('MovieRepository', () => {
       const result = movieRepository.getGenre(occasion, emotion);
 
       // Assert
-      expect(result).toEqual(['Action','Adventure','Sci-Fi']);
+      expect(result).toEqual(['Action', 'Adventure', 'Sci-Fi']);
     });
 
     it('should return the correct genre for a "Bored and Alone" occasion and "Neutral" emotion', () => {
@@ -170,7 +172,7 @@ describe('MovieRepository', () => {
       const result = movieRepository.getGenre(occasion, emotion);
 
       // Assert
-      expect(result).toEqual(['Documentary','Drama']);
+      expect(result).toEqual(['Documentary', 'Drama']);
     });
 
     it('should return the correct genre for a "Bored and Alone" occasion and "Sad" emotion', () => {
@@ -182,10 +184,10 @@ describe('MovieRepository', () => {
       const result = movieRepository.getGenre(occasion, emotion);
 
       // Assert
-      expect(result).toEqual(['Animation','Comedy']);
+      expect(result).toEqual(['Animation', 'Comedy']);
     });
 
-    
+
   });
 
   describe('add', () => {
@@ -242,5 +244,31 @@ describe('MovieRepository', () => {
       expect(filteredMovies).toHaveLength(0);
     });
   });
-  
+
+  describe('findMovies', () => {
+    it('should return movies that match the search criteria', async () => {
+      await movieRepository.populateMoviesRepositoryFromCSV();
+      expect(movieRepository.getAllMovies().length).toBe(651);
+      const form = new MovieSearchForm();
+      form.title = "";
+      form.director = "";
+      form.mpaa_rating = "";
+      form.actor1 = "";
+      form.actor2 = "";
+      form.actor3 = "";
+      form.genre = "Drama";
+      form.approximate_runtime = false;
+      form.runtime = 80;
+      form.release_year = 2013;
+      form.imdb_rating = 5.5;
+      form.critics_score = 45;
+      form.approximate_release_year = false;
+      const searchMovies = movieRepository.findMovies(form);
+
+      expect(searchMovies).toHaveLength(1);
+      expect(searchMovies[0].title).toBe('Filly Brown');
+    });
+
+  });
+
 });
