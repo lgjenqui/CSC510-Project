@@ -119,7 +119,7 @@ export class MovieRepository {
         movie.release_year <= last_release_year &&
         genres.includes(movie.genre);
     });
-    return returnMovies.sort(() => Math.random()-0.5);
+    return returnMovies.sort(() => Math.random() - 0.5);
   }
 
   findMovies(form: MovieSearchForm): Movie[] {
@@ -154,7 +154,7 @@ export class MovieRepository {
       if (form.actor3 != '' && !movieCast.includes(form.actor3.toLowerCase())) {
         return false;
       }
-      
+
       // The provided IMDB rating and critics score are the lower bounds. E.g. if the provided IMDB rating is 5.4, this should return
       // all movies with an IMDB rating of 5.4 or higher
       if (form.imdb_rating != null && movie.imdb_rating < form.imdb_rating) {

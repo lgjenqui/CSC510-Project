@@ -80,8 +80,13 @@ taserver.post('/recmovies', function (req: express.Request, res: express.Respons
     res.status(422).send(JSON.stringify(emotion));
   }
   var occasion = req.body.occasion;
+<<<<<<< HEAD
   if (occasion != "Date Night" && occasion != "Family Movie Night" && occasion != "Movie With Friends") {
     res.status(422).send(JSON.stringify(emotion));
+=======
+  if (occasion != "Date Night" && occasion != "Family Movie Night" && occasion != "Movie With Friends" && occasion != "Bored and Alone") {
+    res.status(422).send(JSON.stringify(occasion));
+>>>>>>> origin/development
   }
   var mpaa_rating = req.body.mpaa_rating;
   var start_release_year = req.body.start_release_year;
@@ -131,7 +136,7 @@ taserver.post('/findMovies', function (req: express.Request, res: express.Respon
   && form.director === "" && form.actor1 === "" && form.actor2 === "" && form.actor3 === "") {
     res.status(422).send(JSON.stringify(form));
   }
-  
+
   // Find and return movies matching the qualifications
   res.status(200).send(JSON.stringify(movieRepo.findMovies(form)));
 })
