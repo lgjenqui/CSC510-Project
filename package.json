@@ -1,6 +1,9 @@
 {
   "scripts": {
-	"server-start": "cd server && npx tsx server.ts", 
+	"server-start": "cd server && npx tsx server.ts",
+	"frontend-start": "cd gui && npm run ng serve",
+	"webdriver-start": "cd tests-acceptance && npm run webdriver-update && npm run webdriver-start",
+	"test:acceptance": "cd tests-acceptance && npm test", 
     "test": "jest",
     "test:coverage": "npm test -- --coverage",
     "test:badges": "npm run test:coverage  && jest-coverage-badges --output \"./badges\""
