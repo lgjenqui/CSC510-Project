@@ -37,10 +37,12 @@ jobs:
         cd ../tests-service
         npm install
         cd ..
+        
     - name: Run Unit and Service Tests with Coverage
       run: |
         npm run server-start  &
         npm run test:badges
+        
     - name: Commit Coverage Badges
       run: |
         git config --global user.name "GitHub Actions Bot"
