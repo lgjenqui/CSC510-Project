@@ -14,7 +14,8 @@ export class MovieSearchComponent {
     genre: '', 
     runtime: null, 
     mpaa_rating: '',
-    release_year: null,
+    release_year_start: null,
+    release_year_end: null,
     imdb_rating: null,
     critics_score: null,
     director: '',
@@ -60,7 +61,7 @@ export class MovieSearchComponent {
   inputIsInvalid(): boolean {
     let form = this.movieSearchForm.value;
     return (form.title === "" && form.genre === "" && form.runtime === null && form.mpaa_rating === ""
-      && form.release_year === null && form.imdb_rating === null && form.critics_score === null
+      && form.release_year_start === null && form.release_year_end == null && form.imdb_rating === null && form.critics_score === null
       && form.director === "" && form.actor1 === "" && form.actor2 === "" && form.actor3 === ""
       || (form.imdb_rating! > 10 || form.imdb_rating! < 0 || form.critics_score! > 100 || form.critics_score! < 0));
   }

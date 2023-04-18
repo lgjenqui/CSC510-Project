@@ -41,8 +41,9 @@
                         <input type="text" class="form-control" id="movie-title-input" formControlName="director">
                     </div>
                     <div class="form-group">
-                        <label for="year-released-input">Year released</label>
-                        <input min="1750" max="2023" type="number" id="year-released-input" class="form-control" formControlName="release_year"/>
+                        <label for="year-released-input">Release Year Range <div style="display: inline; margin-left: 3px;" class="text-muted">(inclusive)</div></label>
+                        <input min="1750" max="2023" type="number" id="year-released-input" class="form-control" formControlName="release_year_start" placeholder="From"/>
+                        <input min="1750" max="2023" type="number" id="year-released-input" class="form-control" formControlName="release_year_end" placeholder="To"/>
                     </div>
                     <div class="form-group">
                         <label for="runtime-input">Runtime <div style="display: inline; margin-left: 3px;" class="text-muted">(minutes)</div></label>

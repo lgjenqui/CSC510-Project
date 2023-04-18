@@ -125,9 +125,10 @@ taserver.post('/findMovies', function (req: express.Request, res: express.Respon
   // Parse the request body into a movie
   const form: MovieSearchForm = req.body as MovieSearchForm;
 
+  console.log(form)
   // Check if at least one field was provided - if not, return an error code
   if (form.title === "" && form.genre === "" && form.runtime === null && form.mpaa_rating === ""
-  && form.release_year === null && form.imdb_rating === null && form.critics_score === null
+  && form.release_year_start === null && form.release_year_end === null && form.imdb_rating === null && form.critics_score === null
   && form.director === "" && form.actor1 === "" && form.actor2 === "" && form.actor3 === "") {
     res.status(422).send(JSON.stringify(form));
   }

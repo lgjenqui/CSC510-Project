@@ -179,15 +179,27 @@ export class MovieRepository {
         }
       }
 
-      if (form.release_year != null) {
+      if (form.release_year_start != null) {
         if (form.approximate_release_year) {
           // If the user has said so, movies released within 5 years of the provided release year on either side are acceptable matches
-          if ((movie.release_year > form.release_year + 5 || movie.release_year < form.release_year - 5)) {
+          if ((movie.release_year < form.release_year_start - 5)) {
             return false;
           }
         } else {
-          // Otherwise, the movie release year must match the provided release year exactly
-          if (movie.release_year != form.release_year) {
+          if (movie.release_year < form.release_year_start) {
+            return false;
+          }
+        }
+      }
+
+      if (form.release_year_end != null) {
+        if (form.approximate_release_year) {
+          // If the user has said so, movies released within 5 years of the provided release year on either side are acceptable matches
+          if ((movie.release_year > form.release_year_end + 5)) {
+            return false;
+          }
+        } else {
+          if (movie.release_year > form.release_year_end) {
             return false;
           }
         }
