@@ -21,11 +21,11 @@
                 </div>
                 <div class="form-group">
                   <label for="exampleFormControlSelect1">IMDB Rating</label>
-                  <input min="0" max="10" type="number" id="imdb-rating" class="form-control" formControlName="imdb_rating"/>
+                  <input min="0" max="10" type="number" id="imdb-rating" class="form-control" formControlName="imdb_rating" placeholder="1 - 10"/>
                 </div>
                 <div class="form-group">
                   <label for="exampleFormControlSelect1">Rotten Tomatoes Rating</label>
-                  <input min="0" max="100" type="number" id="rotten-tomatoes-rating" class="form-control" formControlName="critics_score"/>
+                  <input min="0" max="100" type="number" id="rotten-tomatoes-rating" class="form-control" formControlName="critics_score" placeholder="1 - 100"/>
                 </div>
             </div>
             <div class="col col-2">
@@ -38,7 +38,7 @@
                     <input min="1750" max="2023" type="number" id="year-released-input" class="form-control" formControlName="release_year"/>
                   </div>
                   <div class="form-group">
-                    <label for="runtime-input">Runtime</label>
+                    <label for="runtime-input">Runtime <div style="display: inline; margin-left: 3px;" class="text-muted">(minutes)</div></label>
                     <input min="1" max="1000" type="number" id="runtime-input" class="form-control" formControlName="runtime"/>
                   </div>
                   <div class="form-group mpaa-inputs">

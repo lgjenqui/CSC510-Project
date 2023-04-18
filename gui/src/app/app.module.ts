@@ -26,7 +26,7 @@ import { MovieSearchComponent } from './components/movie-search/movie-search.com
     ReactiveFormsModule,
     NgbModule,
     HttpClientModule,
-    AppRoutingModule  
+    AppRoutingModule
   ],
   providers: [MovieService],
   bootstrap: [AppComponent]
