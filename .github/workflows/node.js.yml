@@ -37,10 +37,7 @@ jobs:
         cd ../tests-service
         npm install
         cd ..
-    - name: Start Server
-      run: |
-        cd server
-        tsx server.ts
     - name: Run Tests and Coverage
       run: |
+        npx tsx server.ts --prefix /server &
         npm run test:badges
