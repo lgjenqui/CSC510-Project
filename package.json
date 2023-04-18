@@ -1,5 +1,6 @@
 {
   "scripts": {
+	"server-start": "cd server && npx tsx server.ts", 
     "test": "jest",
     "test:coverage": "npm test -- --coverage",
     "test:badges": "npm run test:coverage  && jest-coverage-badges --output \"./badges\""
