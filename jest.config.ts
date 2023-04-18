@@ -13,6 +13,6 @@ module.exports = {
       		functions: 70,
    		},
 	},
-    testMatch: ['**/server/tests/*.ts', '**/common/tests/*.ts'],
+    testMatch: ['**/server/tests/*.ts', '**/common/tests/*.ts', '**/tests-service/tests/*.ts'],
   };
   
