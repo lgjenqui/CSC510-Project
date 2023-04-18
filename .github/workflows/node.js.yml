@@ -36,8 +36,16 @@ jobs:
         npm install
         cd ../tests-service
         npm install
+        cd ../tests-acceptance
+        npm install
         cd ..
-    - name: Run Tests and Coverage
+    - name: Run Unit and Service Tests with Coverage
       run: |
         npm run server-start  &
         npm run test:badges
+    - name: Run Acceptance Tests
+      run: |
+        npm run server-start &
+        npm run frontend-start &
+        npm run webdriver-start &
+        npm run test:acceptance
