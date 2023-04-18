@@ -39,5 +39,5 @@ jobs:
         cd ..
     - name: Run Tests and Coverage
       run: |
-        npx --prefix /server run tsx server.ts  &
+        npm run server-start  &
         npm run test:badges
