@@ -43,6 +43,9 @@ jobs:
       run: |
         npm run server-start  &
         npm run test:badges
+        cd server
+        PID=$!
+        kill -INT $PID
     - name: Run Acceptance Tests
       run: |
         npm run server-start &
