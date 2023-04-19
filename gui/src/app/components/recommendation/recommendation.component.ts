@@ -42,8 +42,7 @@ export class RecommendationComponent {
 
   getMoviePoster() {
     this.movieService.getTMDBDetails(this.currentRecMovie).pipe(
-      switchMap(res => this.movieService.getMoviePosterLink(res.results[0].poster_path))
-    ).subscribe(
+      switchMap(res => this.movieService.getMoviePosterLink(res, this.currentRecMovie))).subscribe(
         res => {
           if (res.url) {
             this.currentMoviePosterPath = res.url;
@@ -55,8 +54,7 @@ export class RecommendationComponent {
           if (err.url) {
             this.currentMoviePosterPath = err.url;
           }
-        }
-    )
+        }) 
   }
 
   redirectToHomepage() {
