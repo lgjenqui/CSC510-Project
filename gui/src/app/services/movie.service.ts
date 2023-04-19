@@ -66,7 +66,6 @@ export class MovieService {
     }
 
     getMoviePosterLink(res: any, movie: Movie): Observable<any> {
-        console.log(res);
         // Look for the result with the title and release year matching the movie - these checks make it likely that
         // the correct movie poster is found
         for (let i = 0; i < res.results.length; i++) {
