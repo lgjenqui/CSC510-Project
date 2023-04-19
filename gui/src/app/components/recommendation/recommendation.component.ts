@@ -27,7 +27,7 @@ export class RecommendationComponent {
   loadMovieRecommendations() {
     this.recommendations = this.movieService.getMovieRecommendations();
     this.statusCode = this.movieService.getStatusCode();
-    console.log(this.statusCode);
+    
     if (this.recommendations && this.recommendations.length > 0) {
       this.currentRecMovie = this.recommendations[0];
       this.getMoviePoster();
