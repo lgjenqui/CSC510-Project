@@ -61,14 +61,12 @@ export class MovieRepository {
       return returnGenre;
     }
     else if (occasion == "Movie With Friends" && emotion == "Happy") {
-      returnGenre.push("Action");
-      returnGenre.push("Adventure");
-      returnGenre.push("Sci-Fi");
+      returnGenre.push("Action & Adventure");
+      returnGenre.push("Science Fiction & Fantasy");
       return returnGenre;
     }
     else if (occasion == "Movie With Friends" && emotion == "Neutral") {
-      returnGenre.push("Mystery");
-      returnGenre.push("Suspense");
+      returnGenre.push("Mystery & Suspense");
       return returnGenre;
     }
     else if (occasion == "Movie With Friends" && emotion == "Sad") {
@@ -76,9 +74,8 @@ export class MovieRepository {
       return returnGenre;
     }
     else if (occasion == "Bored and Alone" && emotion == "Happy") {
-      returnGenre.push("Action");
-      returnGenre.push("Adventure");
-      returnGenre.push("Sci-Fi");
+      returnGenre.push("Action & Adventure");
+      returnGenre.push("Science Fiction & Fantasy");
       return returnGenre;
     }
     else if (occasion == "Bored and Alone" && emotion == "Neutral") {
