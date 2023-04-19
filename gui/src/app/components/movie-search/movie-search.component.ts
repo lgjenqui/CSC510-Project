@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { MovieService } from 'src/app/services/movie.service';
 import { Movie } from '../../../../../common/movie';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-movie-search',
@@ -48,7 +49,9 @@ export class MovieSearchComponent {
   movies: Movie[];
 
   constructor(private formBuilder: FormBuilder,
-              private movieService: MovieService) {
+              private movieService: MovieService,
+              private titleService: Title) {
+    this.titleService.setTitle('Search for a movie');
     this.infoIsCorrect = false;
     this.updateSucceeded = false;
     this.updateFailed = false;
