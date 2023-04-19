@@ -50,6 +50,9 @@ export class MovieService {
             res => {
                 this.recommendedMovies = res.body;
                 this.statusCode = res.status;
+            },
+            err => {
+                this.statusCode = err.status;
             }   
         )
     }
