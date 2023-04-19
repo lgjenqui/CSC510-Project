@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { HttpClientModule } from '@angular/common/http';
 import { MovieUpdateComponent } from './movie-update.component';
 
 describe('MovieUpdateComponent', () => {
@@ -8,6 +8,7 @@ describe('MovieUpdateComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [HttpClientModule],
       declarations: [ MovieUpdateComponent ]
     })
     .compileComponents();
