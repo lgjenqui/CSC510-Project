@@ -3,6 +3,7 @@ import { MovieService } from 'src/app/services/movie.service';
 import { Movie } from '../../../../../common/movie';
 import { switchMap } from 'rxjs';
 import { Router } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-recommendation',
@@ -17,7 +18,9 @@ export class RecommendationComponent {
   statusCode: number = 200;
 
   constructor(private movieService: MovieService,
-              private router: Router) {
+              private router: Router,
+              private titleService: Title) {
+    this.titleService.setTitle('Movie Recommendations');
     this.loadMovieRecommendations();
   }
 
