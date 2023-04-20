@@ -48,6 +48,7 @@ jobs:
     - name: Run Frontend Unit Tests with Coverage
       run: |
         cd gui
+        npm install bootswatch
         npm run test:badges
         cd ..
         
