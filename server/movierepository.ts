@@ -87,6 +87,21 @@ export class MovieRepository {
       returnGenre.push("Animation");
       returnGenre.push("Comedy");
       return returnGenre;
+    } else if (occasion == "other" && emotion == "Happy") {
+      returnGenre.push("Animation");
+      returnGenre.push("Comedy");
+      returnGenre.push("Science Fiction & Fantasy");
+      returnGenre.push("Action & Adventure");
+    } else if (occasion == "other" && emotion == "Neutral") {
+      returnGenre.push("Documentary");
+      returnGenre.push("Drama");
+      returnGenre.push("Comedy");
+      returnGenre.push("Mystery & Suspense");
+    } else if (occasion == "other" && emotion == "Sad") {
+      returnGenre.push("Drama");
+      returnGenre.push("Animation");
+      returnGenre.push("Comedy");
+      returnGenre.push("Horror");
     }
     return returnGenre;
 
