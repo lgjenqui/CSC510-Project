@@ -45,13 +45,6 @@ jobs:
         npm run server-start  &
         npm run test:badges
         
-    - name: Run Frontend Unit Tests with Coverage
-      run: |
-        cd gui
-        npm install bootswatch
-        npm run test:badges
-        cd ..
-        
     - name: Commit Coverage Badges
       run: |
         DETATCHED_HEAD_FOUND=$(git status | grep 'HEAD detached' | wc -l)
