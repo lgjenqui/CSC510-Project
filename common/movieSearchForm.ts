@@ -1,12 +1,12 @@
 export class MovieSearchForm {
     title: string = "";
     genre: string = "";
-    runtime: number = 0;
+    runtime: number | null = 0;
     mpaa_rating: string = "";
-    release_year_start: number = 0;
-    release_year_end: number = 0;
-    imdb_rating: number = 0;
-    critics_score: number = 0;
+    release_year_start: number | null = 0;
+    release_year_end: number | null = 0;
+    imdb_rating: number | null = 0;
+    critics_score: number | null = 0;
     director: string = "";
     actor1: string = "";
     actor2: string = "";
