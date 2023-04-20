@@ -7,8 +7,6 @@
 ![Coverage Statements](./badges/badge-statements.svg)
 
 ### Frontend Coverage
-![Coverage Branches](gui/badges/badge-branches.svg)
-![Coverage Functions](gui/badges/badge-functions.svg)
 ![Coverage Lines](gui/badges/badge-lines.svg)
 ![Coverage Statements](gui/badges/badge-statements.svg)
 
