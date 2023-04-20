@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { MovieService } from 'src/app/services/movie.service';
 import { Movie } from '../../../../../common/movie';
-import { MovieSearchForm } from './movie-search-form'
+import { MovieSearchForm } from '../../../../../common/movieSearchForm';
 import { Title } from '@angular/platform-browser';
 
 @Component({
