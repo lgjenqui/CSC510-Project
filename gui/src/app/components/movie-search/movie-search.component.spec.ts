@@ -113,29 +113,29 @@ describe('MovieSearchComponent', () => {
       expect(result).toBeTrue();
     });
 
-//     it('should return true when imdb_rating is greater than 10', () => {
-//       component.movieSearchForm.patchValue({
-//       title: '',
-//       genre: '', 
-//       runtime: null, 
-//       mpaa_rating: '',
-//       release_year_start: null,
-//       release_year_end: null,
-//       imdb_rating: null,
-//       critics_score: null,
-//       director: '',
-//       actor1: '',
-//       actor2: '',
-//       actor3: '',
-//       approximate_runtime: false,
-//       approximate_release_year: false
-// });
+    it('should return false when imdb_rating is greater than 10', () => {
+      component.movieSearchForm.patchValue({
+        imdb_rating: 12
+      });
+      
 
 
-    //   const result = component.inputIsInvalid();
+      const result = component.inputIsInvalid();
 
-    //   expect(result).toBeTrue();
-    // });
+      expect(result).toBeTrue();
+    });
+
+    it('should return true when actor1 is Tom Cruise', () => {
+      component.movieSearchForm.patchValue({
+       actor1: "Tom Cruise"
+      });
+      
+
+
+      const result = component.inputIsInvalid();
+
+      expect(result).toBeFalse();
+    });
 
 
   });

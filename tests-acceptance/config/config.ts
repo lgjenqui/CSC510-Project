@@ -18,7 +18,7 @@ export let config: Config = {
   ],
 
   onPrepare: () => {
-
+    browser.manage().timeouts().implicitlyWait(10000);
     browser.ignoreSynchronization = true;
     browser.manage().window().maximize();
 
@@ -27,5 +27,6 @@ export let config: Config = {
     compiler: "ts:ts-node/register",
     strict: true,
     require: ['../../stepdefinitions/*.ts'],
+    timeout: 10000,
   }
 };
