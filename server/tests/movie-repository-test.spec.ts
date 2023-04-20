@@ -124,7 +124,7 @@ describe('MovieRepository', () => {
       const result = movieRepository.getGenre(occasion, emotion);
 
       // Assert
-      expect(result).toEqual(['Action', 'Adventure', 'Sci-Fi']);
+      expect(result).toEqual(['Action & Adventure', 'Science Fiction & Fantasy']);
     });
 
     it('should return the correct genre for a "Movie With Friends" occasion and "Neutral" emotion', () => {
@@ -136,7 +136,7 @@ describe('MovieRepository', () => {
       const result = movieRepository.getGenre(occasion, emotion);
 
       // Assert
-      expect(result).toEqual(['Mystery', 'Suspense']);
+      expect(result).toEqual(['Mystery & Suspense']);
     });
 
     it('should return the correct genre for a "Movie With Friends" occasion and "Sad" emotion', () => {
@@ -160,7 +160,7 @@ describe('MovieRepository', () => {
       const result = movieRepository.getGenre(occasion, emotion);
 
       // Assert
-      expect(result).toEqual(['Action', 'Adventure', 'Sci-Fi']);
+      expect(result).toEqual(['Action & Adventure', 'Science Fiction & Fantasy']);
     });
 
     it('should return the correct genre for a "Bored and Alone" occasion and "Neutral" emotion', () => {
