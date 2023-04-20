@@ -80,10 +80,13 @@ taserver.post('/recmovies', function (req: express.Request, res: express.Respons
     res.status(422).send(JSON.stringify(emotion));
   }
   var occasion = req.body.occasion;
-  if (occasion != "Date Night" && occasion != "Family Movie Night" && occasion != "Movie With Friends" && occasion != "Bored and Alone") {
+  if (occasion != "Date Night" && occasion != "Family Movie Night" && occasion != "Movie With Friends" && occasion != "Bored and Alone" && occasion != "other") {
     res.status(422).send(JSON.stringify(occasion));
   }
   var mpaa_rating = req.body.mpaa_rating;
+  if (mpaa_rating != "none" && mpaa_rating != "G" && mpaa_rating != "PG" && mpaa_rating != "PG-13" && mpaa_rating != "R") {
+    res.status(422).send(JSON.stringify(mpaa_rating));
+  }
   var start_release_year = req.body.start_release_year;
   var last_release_year = req.body.last_release_year;
 
