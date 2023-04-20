@@ -3,13 +3,20 @@
 
 module.exports = function (config) {
   config.set({
+    preprocessors: {
+      '**/*.ts': ['karma-typescript']
+    },
+    karmaTypescriptConfig: {
+      tsconfig: './tsconfig.json'
+    },
     basePath: '',
-    frameworks: ['jasmine', '@angular-devkit/build-angular'],
+    frameworks: ['jasmine', '@angular-devkit/build-angular', 'karma-typescript'],
     plugins: [
       require('karma-jasmine'),
       require('karma-chrome-launcher'),
       require('karma-jasmine-html-reporter'),
       require('karma-coverage'),
+      require('karma-typescript'),
       require('@angular-devkit/build-angular/plugins/karma')
     ],
     client: {
@@ -24,6 +31,7 @@ module.exports = function (config) {
     jasmineHtmlReporter: {
       suppressAll: true // removes the duplicated traces
     },
+    
     coverageReporter: {
       dir: require('path').join(__dirname, './coverage/gui'),
       subdir: '.',
@@ -32,7 +40,7 @@ module.exports = function (config) {
         { type: 'text-summary' }
       ]
     },
-    reporters: ['progress', 'kjhtml'],
+    reporters: ['progress', 'kjhtml','karma-typescript'],
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
