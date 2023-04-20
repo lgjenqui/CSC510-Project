@@ -33,11 +33,12 @@ module.exports = function (config) {
     },
     
     coverageReporter: {
-      dir: require('path').join(__dirname, './coverage/gui'),
+      dir: require('path').join(__dirname, './coverage'),
       subdir: '.',
       reporters: [
         { type: 'html' },
-        { type: 'text-summary' }
+        { type: 'text-summary' },
+        { type: 'json-summary' }
       ]
     },
     reporters: ['progress', 'kjhtml','karma-typescript'],
@@ -45,7 +46,7 @@ module.exports = function (config) {
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: ['Chrome'],
+    browsers: ['ChromeHeadless'],
     singleRun: false,
     restartOnFileChange: true
   });

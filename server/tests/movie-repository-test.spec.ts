@@ -187,6 +187,42 @@ describe('MovieRepository', () => {
       expect(result).toEqual(['Animation', 'Comedy']);
     });
 
+    it('should return the correct genre for a "other" occasion and "Happy" emotion', () => {
+      // Arrange
+      const occasion = 'other';
+      const emotion = 'Happy';
+
+      // Act
+      const result = movieRepository.getGenre(occasion, emotion);
+
+      // Assert
+      expect(result).toEqual(['Animation', 'Comedy', 'Science Fiction & Fantasy', 'Action & Adventure']);
+    });
+
+    it('should return the correct genre for a "other" occasion and "Neutral" emotion', () => {
+      // Arrange
+      const occasion = 'other';
+      const emotion = 'Neutral';
+
+      // Act
+      const result = movieRepository.getGenre(occasion, emotion);
+
+      // Assert
+      expect(result).toEqual(['Documentary', 'Drama', 'Comedy', 'Mystery & Suspense']);
+    });
+
+    it('should return the correct genre for a "other" occasion and "Sad" emotion', () => {
+      // Arrange
+      const occasion = 'other';
+      const emotion = 'Sad';
+
+      // Act
+      const result = movieRepository.getGenre(occasion, emotion);
+
+      // Assert
+      expect(result).toEqual(['Drama', 'Animation', 'Comedy', 'Horror']);
+    });
+
 
   });
 

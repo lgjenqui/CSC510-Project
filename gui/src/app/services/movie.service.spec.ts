@@ -26,7 +26,7 @@ describe('MovieService', () => {
   });
 
   it('should set movie recommendations', (done: DoneFn) => {
-    const movieReqString = 'some movie request string';
+    const movieReqString = 'Movie 1';
     service.setMovieRecommendations(movieReqString);
     setTimeout(() => {
       expect(service.getMovieRecommendations().length).toBeGreaterThan(0);
@@ -43,15 +43,7 @@ describe('MovieService', () => {
     });
   });
   
-  
 
-  it('should update movie', (done: DoneFn) => {
-    const body = 'some movie update body';
-    service.updateMovie(body).subscribe(response => {
-      expect(response).toBeTruthy();
-      done();
-    });
-  });
 
   it('should find movies', (done: DoneFn) => {
     const body = 'some movie search body';

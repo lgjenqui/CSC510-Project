@@ -2,7 +2,7 @@
    "name": "testes-acceptance",
    "description": "Acceptance tests",
    "scripts": {
-      "tsc": "./node_modules/typescript/bin/tsc",
+      "tsc": "node ./node_modules/typescript/bin/tsc",
       "test": "npm run tsc && protractor compiledCode/config/config.js",
       "webdriver-update": "webdriver-manager update",
       "webdriver-start": "webdriver-manager start"
@@ -28,6 +28,7 @@
       "import-cwd": "^3.0.0",
       "request": "^2.88.2",
       "request-promise": "^4.2.6",
-      "tsc": "^2.0.4"
+      "tsc": "^2.0.4",
+      "webdriver-manager": "^12.1.9"
    }
 }

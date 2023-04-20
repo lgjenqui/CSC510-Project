@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { MovieService } from 'src/app/services/movie.service';
 import { Movie } from '../../../../../common/movie';
+import { MovieSearchForm } from '../../../../../common/movieSearchForm';
 import { Title } from '@angular/platform-browser';
 
 @Component({
@@ -10,7 +11,7 @@ import { Title } from '@angular/platform-browser';
   styleUrls: ['./movie-search.component.css']
 })
 export class MovieSearchComponent {
-  movieSearchForm = this.formBuilder.group({
+  movieSearchForm = this.formBuilder.group<MovieSearchForm>({
     title: '',
     genre: '', 
     runtime: null, 
