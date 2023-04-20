@@ -28,7 +28,7 @@ Examples:
   | occasion           | emotion | fromYear | toYear | rating        | title                     |
   | Date Night         | Happy   | 1970     | 1980   | G             | The Shaggy D.A.           |
   | Movie With Friends | Neutral | 2000     | 2002   | PG-13         | The Mothman Prophecies    |
-  | other              | Sad     | 1960     | 1971   | G             | Let It Be                 |
+  | other              | Neutral | 1960     | 1971   | G             | Let It Be                 |
   | Bored and Alone    | Neutral | 1960     | 1971   | no-preference | Let It Be                 |
   | Family Movie Night | Happy   | 2006     | 2006   | G             | Doogal                    |
   | Bored and Alone    | Sad     | 2011     | 2011   | R             | A Good Old Fashioned Orgy |
