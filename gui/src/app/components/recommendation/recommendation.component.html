@@ -75,4 +75,12 @@
             <button (click)="redirectToHomepage()" class="btn btn-success">Try again?</button>
           </div>
     </div>
+
+    <div *ngIf="statusCode != 200 && statusCode != 204 && statusCode != 206" class="server-error request-error-warning">
+        <div class="alert alert-dismissible alert-warning">
+            <h4 class="alert-heading">Our bad...</h4>
+            <p class="mb-0">It looks like there's a problem with our server. Please try again at another time.</p>
+            <button (click)="redirectToHomepage()" class="btn btn-success">Try again?</button>
+          </div>
+    </div>
 </div>

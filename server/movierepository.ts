@@ -61,14 +61,12 @@ export class MovieRepository {
       return returnGenre;
     }
     else if (occasion == "Movie With Friends" && emotion == "Happy") {
-      returnGenre.push("Action");
-      returnGenre.push("Adventure");
-      returnGenre.push("Sci-Fi");
+      returnGenre.push("Action & Adventure");
+      returnGenre.push("Science Fiction & Fantasy");
       return returnGenre;
     }
     else if (occasion == "Movie With Friends" && emotion == "Neutral") {
-      returnGenre.push("Mystery");
-      returnGenre.push("Suspense");
+      returnGenre.push("Mystery & Suspense");
       return returnGenre;
     }
     else if (occasion == "Movie With Friends" && emotion == "Sad") {
@@ -76,9 +74,8 @@ export class MovieRepository {
       return returnGenre;
     }
     else if (occasion == "Bored and Alone" && emotion == "Happy") {
-      returnGenre.push("Action");
-      returnGenre.push("Adventure");
-      returnGenre.push("Sci-Fi");
+      returnGenre.push("Action & Adventure");
+      returnGenre.push("Science Fiction & Fantasy");
       return returnGenre;
     }
     else if (occasion == "Bored and Alone" && emotion == "Neutral") {
@@ -119,7 +116,7 @@ export class MovieRepository {
         movie.release_year <= last_release_year &&
         genres.includes(movie.genre);
     });
-    return returnMovies.sort(() => Math.random()-0.5);
+    return returnMovies.sort(() => Math.random() - 0.5);
   }
 
   findMovies(form: MovieSearchForm): Movie[] {
@@ -154,7 +151,7 @@ export class MovieRepository {
       if (form.actor3 != '' && !movieCast.includes(form.actor3.toLowerCase())) {
         return false;
       }
-      
+
       // The provided IMDB rating and critics score are the lower bounds. E.g. if the provided IMDB rating is 5.4, this should return
       // all movies with an IMDB rating of 5.4 or higher
       if (form.imdb_rating != null && movie.imdb_rating < form.imdb_rating) {
@@ -179,15 +176,27 @@ export class MovieRepository {
         }
       }
 
-      if (form.release_year != null) {
+      if (form.release_year_start != null) {
         if (form.approximate_release_year) {
           // If the user has said so, movies released within 5 years of the provided release year on either side are acceptable matches
-          if ((movie.release_year > form.release_year + 5 || movie.release_year < form.release_year - 5)) {
+          if ((movie.release_year < form.release_year_start - 5)) {
             return false;
           }
         } else {
-          // Otherwise, the movie release year must match the provided release year exactly
-          if (movie.release_year != form.release_year) {
+          if (movie.release_year < form.release_year_start) {
+            return false;
+          }
+        }
+      }
+
+      if (form.release_year_end != null) {
+        if (form.approximate_release_year) {
+          // If the user has said so, movies released within 5 years of the provided release year on either side are acceptable matches
+          if ((movie.release_year > form.release_year_end + 5)) {
+            return false;
+          }
+        } else {
+          if (movie.release_year > form.release_year_end) {
             return false;
           }
         }

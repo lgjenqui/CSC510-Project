@@ -3,6 +3,7 @@ import { MovieService } from 'src/app/services/movie.service';
 import { Movie } from '../../../../../common/movie';
 import { switchMap } from 'rxjs';
 import { Router } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-recommendation',
@@ -17,13 +18,16 @@ export class RecommendationComponent {
   statusCode: number = 200;
 
   constructor(private movieService: MovieService,
-              private router: Router) {
+              private router: Router,
+              private titleService: Title) {
+    this.titleService.setTitle('Movie Recommendations');
     this.loadMovieRecommendations();
   }
 
   loadMovieRecommendations() {
     this.recommendations = this.movieService.getMovieRecommendations();
     this.statusCode = this.movieService.getStatusCode();
+    
     if (this.recommendations && this.recommendations.length > 0) {
       this.currentRecMovie = this.recommendations[0];
       this.getMoviePoster();
@@ -38,8 +42,7 @@ export class RecommendationComponent {
 
   getMoviePoster() {
     this.movieService.getTMDBDetails(this.currentRecMovie).pipe(
-      switchMap(res => this.movieService.getMoviePosterLink(res.results[0].poster_path))
-    ).subscribe(
+      switchMap(res => this.movieService.getMoviePosterLink(res, this.currentRecMovie))).subscribe(
         res => {
           if (res.url) {
             this.currentMoviePosterPath = res.url;
@@ -51,8 +54,7 @@ export class RecommendationComponent {
           if (err.url) {
             this.currentMoviePosterPath = err.url;
           }
-        }
-    )
+        }) 
   }
 
   redirectToHomepage() {

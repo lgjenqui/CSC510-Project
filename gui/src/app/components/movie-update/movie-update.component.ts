@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { MovieService } from 'src/app/services/movie.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-movie-update',
@@ -28,7 +29,9 @@ export class MovieUpdateComponent {
   loading: boolean; // indicates whether a request is being completed at this time
 
   constructor(private formBuilder: FormBuilder,
-              private movieService: MovieService) {
+              private movieService: MovieService,
+              private titleService: Title) {
+    this.titleService.setTitle('Add or update a movie');
     this.updateSucceeded = false;
     this.updateFailed = false;
     this.infoIsCorrect = true;
@@ -39,7 +42,8 @@ export class MovieUpdateComponent {
     let form = this.movieUpdateForm.value;
     return (form.title === "" || form.genre === "" || form.runtime === null || form.mpaa_rating === ""
       || form.release_year === null || form.imdb_rating === null || form.critics_score === null
-      || form.director === "" || form.actor1 === "" || form.actor2 === "" || form.actor3 === "");
+      || form.director === "" || form.actor1 === "" || form.actor2 === "" || form.actor3 === ""
+      || form.imdb_rating! > 10 || form.imdb_rating! < 0 || form.critics_score! > 100 || form.critics_score! < 0);
   }
 
   onSubmit() {

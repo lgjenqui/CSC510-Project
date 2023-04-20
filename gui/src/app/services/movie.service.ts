@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+
 import { Movie } from '../../../../common/movie';
 import { Observable } from 'rxjs';
 
@@ -50,6 +51,9 @@ export class MovieService {
             res => {
                 this.recommendedMovies = res.body;
                 this.statusCode = res.status;
+            },
+            err => {
+                this.statusCode = err.status;
             }   
         )
     }
@@ -62,8 +66,19 @@ export class MovieService {
         return this.statusCode;
     }
 
-    getMoviePosterLink(imgId: string): Observable<any> {
-        return this.http.get(this.tmdbPosterEndpoint + imgId);
+    getMoviePosterLink(res: any, movie: Movie): Observable<any> {
+        // Look for the result with the title and release year matching the movie - these checks make it likely that
+        // the correct movie poster is found
+        for (let i = 0; i < res.results.length; i++) {
+            let result = res.results[i];
+            // Parse the release year from the original format of yyyy-xx-zz to a number
+            let releaseYear = parseInt(result.release_date.substring(0, 4));
+            if (result.original_title.toLowerCase() == movie.title.toLowerCase() && releaseYear == movie.release_year) {
+                return this.http.get(this.tmdbPosterEndpoint + result.poster_path);
+            } 
+        }
+        // Default to returning the poster of the first movie in the list
+        return this.http.get(this.tmdbPosterEndpoint + res.results[0].poster_path);
     }
 
     getTMDBDetails(movie: Movie): Observable<any> {
